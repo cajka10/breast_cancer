@@ -12,6 +12,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.EnumSet;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
@@ -39,12 +41,16 @@ public class MainWindowController implements Initializable {
         this.userService = new UserService();
     }
 
-    public void newPatientOnAction(ActionEvent event){
+    public void newPatientOnAction(ActionEvent event)  {
+
+    }
+
+    public void confirmButtonOnAction(ActionEvent event) throws InvalidKeySpecException {
         if (this.userService.addPatient(userNameTextField.getText(), this.roleComboBox.getValue()) == 1){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("Užívatel bol úspešne vytvorený.");
+            alert.setContentText("Užívatel bol úspešne vytvorený. \n Heslo je:");
 
             alert.showAndWait();
         } else {
@@ -61,9 +67,5 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         this.roleComboBox.getItems().addAll(UserRole.values());
-    }
-
-    public void confirmButtonOnAction(ActionEvent event) {
-
     }
 }

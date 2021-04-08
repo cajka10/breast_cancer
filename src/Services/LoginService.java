@@ -1,8 +1,12 @@
 package Services;
 
+import Core.PsswdUtils;
 import Entity.User;
 import Repository.LoginRepository;
 import javafx.scene.control.Alert;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 public class LoginService {
 
@@ -12,8 +16,13 @@ public class LoginService {
         this.loginRepository =  new LoginRepository();
     }
 
-    public boolean validateLogin(String userName, String psswd) {
-        User loggedUser = this.loginRepository.login(userName, psswd);
+    public boolean validateLogin(String userName, String psswd) throws InvalidKeySpecException {
+        PsswdUtils psswdUtils = new PsswdUtils();
+        String hash = "";
+        if (!userName.equals("admin"))
+            hash = psswdUtils.hashPassword(psswd);
+
+        User loggedUser = this.loginRepository.login(userName, hash);
         if (loggedUser != null) {
             return true;
 

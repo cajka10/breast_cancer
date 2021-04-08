@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 public class LoginController {
 
@@ -39,7 +41,7 @@ public class LoginController {
         stage.close();
     }
 
-    public void loginButtonOnAction(ActionEvent event) {
+    public void loginButtonOnAction(ActionEvent event) throws InvalidKeySpecException {
         if (userNameTextField.getText().isBlank() == false && psswdTextField.getText().isBlank() == false) {
             if (loginService.validateLogin(userNameTextField.getText(), psswdTextField.getText())) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();

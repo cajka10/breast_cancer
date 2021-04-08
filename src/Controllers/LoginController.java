@@ -34,14 +34,14 @@ public class LoginController {
         loginService = new LoginService();
     }
 
-    public void cancelButtonOnAction(ActionEvent event){
+    public void cancelButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
 
-    public void loginButtonOnAction(ActionEvent event){
-        if (userNameTextField.getText().isBlank() == false && psswdTextField.getText().isBlank() == false){
-            if(loginService.validateLogin(userNameTextField.getText(), psswdTextField.getText())){
+    public void loginButtonOnAction(ActionEvent event) {
+        if (userNameTextField.getText().isBlank() == false && psswdTextField.getText().isBlank() == false) {
+            if (loginService.validateLogin(userNameTextField.getText(), psswdTextField.getText())) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 stage.close();
                 Stage newStage = new Stage();
@@ -49,7 +49,7 @@ public class LoginController {
                     Scene newScene = new Scene(FXMLLoader.load(getClass().getResource("/Screens/MainWindow.fxml")));
                     newStage.setScene(newScene);
                     newStage.show();
-                }catch (IOException ex){
+                } catch (IOException ex) {
                     ex.printStackTrace();
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Dialog");

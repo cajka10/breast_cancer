@@ -15,12 +15,6 @@ public class LoginService {
     public boolean validateLogin(String userName, String psswd) {
         User loggedUser = this.loginRepository.login(userName, psswd);
         if (loggedUser != null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Prihlasenie uspesne.");
-
-            alert.showAndWait();
             return true;
 
         } else {

@@ -18,4 +18,8 @@ public enum UserRole {
         }
         return null;
     }
+
+    public int getI() {
+        return i;
+    }
 }

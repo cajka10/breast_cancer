@@ -3,7 +3,6 @@ package Repository;
 import Core.DbConnection;
 import Entity.Enum.UserRole;
 import Entity.User;
-import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,9 +30,32 @@ public class LoginRepository {
                 SQLException e) {
             System.out.println("Connection Failed");
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return loggedUser;
+    }
+
+    public int addUser(String userName, String psswd, int roleId) {
+        int row = 0;
+        String query = "INSERT INTO public.user (user_name, password, role_id) VALUES (?, ?, ?)";
+
+        try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
+            stmt.setString(1, userName);
+            stmt.setString(2, psswd);
+            stmt.setInt(3, roleId);
+
+            row = stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+        return row;
     }
 
     private Connection getConnection() {

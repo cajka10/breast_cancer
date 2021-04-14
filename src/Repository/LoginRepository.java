@@ -10,8 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginRepository {
-    private DbConnection connection;
-
     public LoginRepository() {
 
     }

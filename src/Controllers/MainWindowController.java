@@ -2,14 +2,13 @@ package Controllers;
 
 import Entity.Enum.UserRole;
 import Services.LoginService;
+import Services.MainService;
 import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
@@ -23,6 +22,7 @@ public class MainWindowController implements Initializable {
 
     private LoginService loginService;
     private UserService userService;
+    private MainService mainService;
 
     @FXML
     private Button cancelButton;
@@ -36,9 +36,13 @@ public class MainWindowController implements Initializable {
     @FXML
     private ComboBox<UserRole> roleComboBox;
 
+    @FXML
+    private TableView tableview;
+
     public MainWindowController() {
         this.loginService = new LoginService();
         this.userService = new UserService();
+        this.mainService = new MainService();
     }
 
     public void newPatientOnAction(ActionEvent event)  {
@@ -67,5 +71,9 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         this.roleComboBox.getItems().addAll(UserRole.values());
+    }
+
+    public void importButtonOnAction(ActionEvent event) {
+        this.mainService.importData((Stage) roleComboBox.getScene().getWindow());
     }
 }

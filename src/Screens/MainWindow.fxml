@@ -3,14 +3,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -86,19 +83,10 @@
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="741.0">
                                  <children>
-                                    <TextField fx:id="userNameTextField" layoutX="314.0" layoutY="36.0" />
-                                    <Label layoutX="133.0" layoutY="36.0" prefHeight="25.0" prefWidth="159.0" text="Užívateľské meno">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <ComboBox fx:id="roleComboBox" layoutX="314.0" layoutY="78.0" prefWidth="150.0" />
-                                    <Label layoutX="133.0" layoutY="78.0" prefHeight="25.0" prefWidth="159.0" text="Užívateľská rola">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                     <Button fx:id="confirmButton" layoutX="235.0" layoutY="131.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="25.0" prefWidth="115.0" text="Potvrdiť" />
+                                    <TableView fx:id="usersTableView" layoutX="6.0" layoutY="4.0" prefHeight="507.0" prefWidth="618.0">
+                                      <columns>
+                                      </columns>
+                                    </TableView>
                                  </children>
                               </AnchorPane>
                           </items>

@@ -2,22 +2,26 @@ package Services;
 
 import Core.PsswdUtils;
 import Entity.Enum.UserRole;
-import Repository.LoginRepository;
+import Repository.UserRepository;
+import javafx.scene.control.TableView;
 
-import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 public class UserService {
 
-    private final LoginRepository loginRepository;
+    private final UserRepository userRepository;
 
     public UserService() {
-        this.loginRepository = new LoginRepository();
+        this.userRepository = new UserRepository();
     }
 
     public int addPatient(String username, UserRole role) throws InvalidKeySpecException {
         PsswdUtils psswdUtils = new PsswdUtils();
-        return this.loginRepository.addUser(username, psswdUtils.generatePassword(), role.getI());
+        return this.userRepository.addUser(username, psswdUtils.generatePassword(), role.getI());
+    }
+
+    public TableView getUsers(){
+        return userRepository.getUserColumns();
     }
 
 }

@@ -11,11 +11,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.EnumSet;
 import java.util.ResourceBundle;
-import java.util.stream.Stream;
 
 
 public class MainWindowController implements Initializable {
@@ -37,20 +34,21 @@ public class MainWindowController implements Initializable {
     private ComboBox<UserRole> roleComboBox;
 
     @FXML
-    private TableView tableview;
+    private TableView patientView;
 
     public MainWindowController() {
         this.loginService = new LoginService();
         this.userService = new UserService();
         this.mainService = new MainService();
+
     }
 
-    public void newPatientOnAction(ActionEvent event)  {
+    public void newPatientOnAction(ActionEvent event) {
 
     }
 
     public void confirmButtonOnAction(ActionEvent event) throws InvalidKeySpecException {
-        if (this.userService.addPatient(userNameTextField.getText(), this.roleComboBox.getValue()) == 1){
+        if (this.userService.addPatient(userNameTextField.getText(), this.roleComboBox.getValue()) == 1) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
@@ -69,11 +67,18 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         this.roleComboBox.getItems().addAll(UserRole.values());
+        TableView temptable = this.mainService.getData();
+        this.patientView.getColumns().addAll(temptable.getColumns());
+        this.patientView.setItems(temptable.getItems());
+        this.patientView.refresh();
     }
 
     public void importButtonOnAction(ActionEvent event) {
         this.mainService.importData((Stage) roleComboBox.getScene().getWindow());
+    }
+
+    public void refreshButtonOnAction(ActionEvent event) {
+        this.patientView.refresh();
     }
 }

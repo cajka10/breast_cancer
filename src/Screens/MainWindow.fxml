@@ -28,7 +28,8 @@
                            <items>
                               <AnchorPane prefHeight="466.0" prefWidth="163.0">
                                  <children>
-                                    <Button layoutX="42.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" text="Nový pacient" />
+                                    <Button fx:id="addPatientButton" layoutX="42.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" text="Nový pacient" />
+                                    <Button fx:id="refreshButton" layoutX="40.0" layoutY="75.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="26.0" prefWidth="141.0" text="Obnoviť" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="388.0" prefWidth="246.0">
@@ -40,10 +41,8 @@
                                        <textFill>
                                           <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
                                        </textFill></Label>
-                                    <TableView layoutX="4.0" prefHeight="520.0" prefWidth="662.0">
+                                    <TableView fx:id="patientView" layoutX="4.0" prefHeight="520.0" prefWidth="662.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -62,7 +61,7 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="137.0">
                                  <children>
-                                    <Button fx:id="importButton" layoutX="56.0" layoutY="71.0" mnemonicParsing="false" onAction="#importButtonOnAction" prefHeight="25.0" prefWidth="154.0" text="Import data" />
+                                    <Button fx:id="importButton" layoutX="55.0" layoutY="30.0" mnemonicParsing="false" onAction="#importButtonOnAction" prefHeight="25.0" prefWidth="154.0" text="Import data" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="741.0">
@@ -114,7 +113,6 @@
             <Insets />
          </VBox.margin>
          <buttons>
-            <Button mnemonicParsing="false" text="Button" />
             <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
          </buttons>
          <padding>

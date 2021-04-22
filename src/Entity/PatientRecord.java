@@ -1,5 +1,7 @@
 package Entity;
 
+import Entity.Enum.TumorType;
+
 public class PatientRecord {
 
     private double radiusMean;
@@ -34,6 +36,8 @@ public class PatientRecord {
     private double concave_pointsWorst;
     private double symmetryWorst;
     private double fractal_dimensionWorst;
+
+    private TumorType tumorType;
 
     public double getRadiusMean() {
         return radiusMean;
@@ -273,5 +277,13 @@ public class PatientRecord {
 
     public void setFractal_dimensionWorst(double fractal_dimensionWorst) {
         this.fractal_dimensionWorst = fractal_dimensionWorst;
+    }
+
+    public TumorType getTumorType() {
+        return tumorType;
+    }
+
+    public void setTumorType(TumorType tumorType) {
+        this.tumorType = tumorType;
     }
 }

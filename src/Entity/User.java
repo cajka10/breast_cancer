@@ -8,6 +8,10 @@ public class User {
 
     private UserRole role;
 
+    private int userId;
+
+    private boolean isNew;
+
     public String getUserName() {
         return userName;
     }
@@ -22,5 +26,21 @@ public class User {
 
     public void setRole(UserRole role) {
         this.role = role;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public boolean isNew() {
+        return isNew;
+    }
+
+    public void setNew(boolean aNew) {
+        isNew = aNew;
     }
 }

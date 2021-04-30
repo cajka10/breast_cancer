@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.ResourceBundle;
 
@@ -27,8 +28,8 @@ public class NewUserController implements Initializable {
         this.userService = new UserService();
     }
 
-    public void confirmButtonOnAction(ActionEvent event) throws InvalidKeySpecException {
-        if (this.userService.addPatient(userNameTextField.getText(), this.roleComboBox.getValue()) == 1) {
+    public void confirmButtonOnAction(ActionEvent event) throws InvalidKeySpecException, NoSuchAlgorithmException {
+        if (this.userService.addUser(userNameTextField.getText(), this.roleComboBox.getValue()) == 1) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);

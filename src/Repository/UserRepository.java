@@ -21,15 +21,18 @@ public class UserRepository {
 
     }
 
-    public User login(String userName, String psswd) {
+    public User login(String userName) {
         User loggedUser = new User();
-        String query = String.format("Select user_name, role_id from public.user where user_name like '%s' and password like '%s'", userName, psswd);
+        String query = String.format("Select user_id, user_name, role_id, is_new from public.user where user_name like '%s' ", userName);
 
         try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 loggedUser.setUserName(rs.getString("user_name"));
                 loggedUser.setRole(UserRole.valueOf(rs.getInt("role_id")));
+                loggedUser.setNew(rs.getBoolean("is_new"));
+                loggedUser.setUserId(rs.getInt("user_id"));
+                return loggedUser;
             }
         } catch (
                 SQLException e) {
@@ -39,7 +42,27 @@ public class UserRepository {
             e.printStackTrace();
         }
 
-        return loggedUser;
+        return null;
+    }
+
+    public String getPsswd(int userId){
+        String psswd = "";
+        String query = String.format("Select password from public.user where user_id = '%s' ", userId);
+
+        try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                psswd = rs.getString("password");
+            }
+        } catch (
+                SQLException e) {
+            System.out.println("Connection Failed");
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return psswd;
     }
 
     public int addUser(String userName, String psswd, int roleId) {
@@ -61,6 +84,31 @@ public class UserRepository {
         }
 
         return row;
+    }
+
+    public User getUserById(int userId){
+        User user = new User();
+
+        String query = "Select user_name, role_id, is_new from public.user where user_id = ? ";
+
+        try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
+            stmt.setInt(0, userId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                user.setUserId(userId);
+                user.setUserName(rs.getString("user_name"));
+                user.setRole(UserRole.valueOf(rs.getInt("role_id")));
+                user.setNew(rs.getBoolean("is_new"));
+            }
+        } catch (
+                SQLException e) {
+            System.out.println("Connection Failed");
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return user;
     }
 
     public TableView getUserColumns() {
@@ -114,4 +162,22 @@ public class UserRepository {
         return connection.getDbConnection();
     }
 
+    public int changeUserPassword(int userId, String password) {
+        int recordsUpdated = 0;
+        String query = "UPDATE public.user set password = ?, is_new = false where user_id = ? ";
+
+        try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
+            stmt.setString(1, password);
+            stmt.setInt(2, userId);
+
+            recordsUpdated = stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return recordsUpdated;
+    }
 }

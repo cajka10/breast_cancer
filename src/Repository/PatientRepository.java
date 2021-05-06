@@ -73,8 +73,8 @@ public class PatientRepository {
         return connection.getDbConnection();
     }
 
-    public TableView getPatientColumns() {
-        String query = "Select * from public.patient_record";
+    public TableView getPatientColumns(String table) {
+        String query = "Select * from public." + table;
         TableView tableView = new TableView();
         ObservableList<ObservableList> data = FXCollections.observableArrayList();
         try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {

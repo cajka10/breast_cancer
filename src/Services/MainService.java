@@ -27,8 +27,11 @@ public class MainService {
         this.patientRepository = new PatientRepository();
     }
 
-    public TableView getData() {
-        return patientRepository.getPatientColumns();
+    public TableView getPatients() {
+        return patientRepository.getPatientColumns(PATIENT_TABLE);
+    }
+    public TableView getPatientsRecords() {
+        return patientRepository.getPatientColumns(PATIENT_RECORD_TABLE);
     }
 
     public void importData(Stage stage) {

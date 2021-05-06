@@ -32,6 +32,9 @@ public class MainWindowController implements Initializable {
     private TableView patientView;
 
     @FXML
+    private TableView patientRecordsTableView;
+
+    @FXML
     private TableView usersTableView;
 
     public MainWindowController() {
@@ -64,14 +67,24 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         this.reloadPatients();
+        this.reloadPatientRecords();
         this.reloadUsers();
     }
 
     private void reloadPatients() {
         this.patientView.getItems().clear();
-        TableView patientTable = this.mainService.getData();
+        TableView patientTable = this.mainService.getPatients();
         this.patientView.getColumns().addAll(patientTable.getColumns());
         this.patientView.setItems(patientTable.getItems());
+        this.patientView.refresh();
+
+    }
+
+    private void reloadPatientRecords() {
+        this.patientRecordsTableView.getItems().clear();
+        TableView patientTable = this.mainService.getPatientsRecords();
+        this.patientRecordsTableView.getColumns().addAll(patientTable.getColumns());
+        this.patientRecordsTableView.setItems(patientTable.getItems());
         this.patientView.refresh();
 
     }

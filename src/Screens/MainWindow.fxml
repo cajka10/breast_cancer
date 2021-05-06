@@ -25,7 +25,7 @@
                            <items>
                               <AnchorPane prefHeight="466.0" prefWidth="163.0">
                                  <children>
-                                    <Button fx:id="addPatientButton" layoutX="42.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" text="Nový pacient" />
+                                    <Button fx:id="addPatientByDoctorButton" layoutX="42.0" layoutY="33.0" mnemonicParsing="false" onAction="#addPatientByDoctorButtonOnAction" prefHeight="25.0" prefWidth="138.0" text="Nový pacient" />
                                     <Button fx:id="refreshButton" layoutX="40.0" layoutY="75.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="26.0" prefWidth="141.0" text="Obnoviť" />
                                  </children>
                               </AnchorPane>
@@ -59,6 +59,7 @@
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="137.0">
                                  <children>
                                     <Button fx:id="importButton" layoutX="55.0" layoutY="30.0" mnemonicParsing="false" onAction="#importButtonOnAction" prefHeight="25.0" prefWidth="154.0" text="Import data" />
+                                    <Button fx:id="importPatientButton" layoutX="53.0" layoutY="68.0" mnemonicParsing="false" onAction="#importPatientButtonOnAction" prefHeight="26.0" prefWidth="155.0" text="Import pacienta" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="741.0">
@@ -78,7 +79,7 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="137.0">
                                  <children>
-                                    <Button fx:id="newPatientButton" layoutX="56.0" layoutY="31.0" mnemonicParsing="false" onAction="#newPatientOnAction" prefHeight="25.0" prefWidth="154.0" text="Pridať Uživateľa" />
+                                    <Button fx:id="newPatientButton" layoutX="56.0" layoutY="31.0" mnemonicParsing="false" onAction="#newUserOnAction" prefHeight="25.0" prefWidth="154.0" text="Pridať Uživateľa" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="741.0">
@@ -101,7 +102,7 @@
             <Insets />
          </VBox.margin>
          <buttons>
-            <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonOnAction" text="Cancel" />
          </buttons>
          <padding>
             <Insets right="15.0" />

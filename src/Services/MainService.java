@@ -21,6 +21,8 @@ public class MainService {
     private ObservableList<ObservableList> data;
     private PatientRepository patientRepository;
 
+    private String PATIENT_TABLE = "PATIENT";
+    private String PATIENT_RECORD_TABLE = "PATIENT_RECORD";
     public MainService() {
         this.patientRepository = new PatientRepository();
     }
@@ -87,8 +89,12 @@ public class MainService {
             patient.setSymmetryWorst(Double.valueOf(record[28]));
             patient.setFractal_dimensionWorst(Double.valueOf(record[29]));
 
-            this.patientRepository.addPatient(patient);
+            this.patientRepository.addPatient(patient, PATIENT_RECORD_TABLE );
 
         }
+    }
+
+    public void addPatientRecord(PatientRecord record) {
+        this.patientRepository.addPatient(record, PATIENT_TABLE);
     }
 }

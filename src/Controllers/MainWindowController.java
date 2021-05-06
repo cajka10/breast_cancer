@@ -41,12 +41,12 @@ public class MainWindowController implements Initializable {
 
     }
 
-    public void newPatientOnAction(ActionEvent event) {
+    public void newUserOnAction(ActionEvent event) {
         try {
             Stage newStage = new Stage();
             Scene newScene = new Scene(FXMLLoader.load(getClass().getResource("/Screens/NewUser.fxml")));
             newStage.setScene(newScene);
-            newStage.show();
+            newStage.showAndWait();
             this.reloadUsers();
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -57,6 +57,7 @@ public class MainWindowController implements Initializable {
 
             alert.showAndWait();
         }
+
     }
 
     @Override
@@ -90,5 +91,31 @@ public class MainWindowController implements Initializable {
 
     public void refreshButtonOnAction(ActionEvent event) {
         this.patientView.refresh();
+    }
+
+    public void importPatientButtonOnAction(ActionEvent event) {
+    }
+
+    public void cancelButtonOnAction(ActionEvent event) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+    }
+
+    public void addPatientByDoctorButtonOnAction(ActionEvent event) {
+        try {
+            Stage newStage = new Stage();
+            Scene newScene = new Scene(FXMLLoader.load(getClass().getResource("/Screens/NewPatientRecord.fxml")));
+            newStage.setScene(newScene);
+            newStage.show();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Nepodarilo sa otvoriť okno.");
+
+            alert.showAndWait();
+        }
     }
 }

@@ -19,7 +19,7 @@ public class PatientRepository {
 
     public void addPatient(PatientRecord record, String tableName) {
         int row = 0;
-        String query = "insert into public."+ tableName + " (radius_mean, texture_mean, perimeter_mean, area_mean, smoothness_mean, compactness_mean, concavity_mean, concave_points_mean," +
+        String query = "insert into public." + tableName + " (radius_mean, texture_mean, perimeter_mean, area_mean, smoothness_mean, compactness_mean, concavity_mean, concave_points_mean," +
                 " symmetry_mean, fractal_dimension_mean, radius_se, texture_se, perimeter_se, area_se, smoothness_se, compactness_se, concavity_se, concave_points_se, symmetry_seq, " +
                 " fractal_dimension_se, radius_worst, texture_worst, perimeter_worst, area_worst, smoothness_worst, compactness_worst, concavity_worst, concave_points_worst," +
                 " symmetry_worst, fractal_dimension_worst) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -84,11 +84,7 @@ public class PatientRepository {
                 //Dynamic tableviews columns
                 final int j = i;
                 TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1));
-                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                        return new SimpleStringProperty(param.getValue().get(j).toString());
-                    }
-                });
+                col.setCellValueFactory((Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>) param -> new SimpleStringProperty(param.getValue().get(j).toString()));
 
                 tableView.getColumns().addAll(col);
                 System.out.println("Column [" + i + "] ");
@@ -116,5 +112,61 @@ public class PatientRepository {
             return null;
         }
         return tableView;
+    }
+
+    public PatientRecord getPatientById(int patientId, String patient_table) {
+        String query = "Select * from public." + patient_table + " where patient_id = ?";
+        try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
+            stmt.setInt(1, patientId);
+            PatientRecord record = new PatientRecord();
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                record.setRecordId(rs.getInt("patient_id"));
+                record.setRadiusMean(rs.getDouble("radius_mean"));
+                record.setTextureMean(rs.getDouble("texture_mean"));
+                record.setPerimeterMean(rs.getDouble("perimeter_mean"));
+                record.setAreaMean(rs.getDouble("area_mean"));
+                record.setSmoothnessMean(rs.getDouble("smoothness_mean"));
+                record.setCompactnessMean(rs.getDouble("compactness_mean"));
+                record.setConcave_pointsMean(rs.getDouble("concave_points_mean"));
+                record.setSymmetryMean(rs.getDouble("symmetry_mean"));
+                record.setFractal_dimensionMean(rs.getDouble("fractal_dimension_mean"));
+                record.setConcavityMean(rs.getDouble("concavity_mean"));
+
+                record.setRadiusSe(rs.getDouble("radius_se"));
+                record.setTextureSe(rs.getDouble("texture_se"));
+                record.setPerimeterSe(rs.getDouble("perimeter_se"));
+                record.setAreaSe(rs.getDouble("area_se"));
+                record.setSmoothnessSe(rs.getDouble("smoothness_se"));
+                record.setCompactnessSe(rs.getDouble("compactness_se"));
+                record.setConcavitySe(rs.getDouble("concavity_se"));
+                record.setConcave_pointsSe(rs.getDouble("concave_points_se"));
+                record.setSymmetrySe(rs.getDouble("symmetry_seq"));
+                record.setFractal_dimensionSe(rs.getDouble("fractal_dimension_se"));
+
+                record.setRadiusWorst(rs.getDouble("radius_worst"));
+                record.setTextureWorst(rs.getDouble("texture_worst"));
+                record.setPerimeterWorst(rs.getDouble("perimeter_worst"));
+                record.setAreaWorst(rs.getDouble("area_worst"));
+                record.setSmoothnessWorst(rs.getDouble("smoothness_worst"));
+                record.setCompactnessWorst(rs.getDouble("compactness_worst"));
+                record.setConcavityWorst(rs.getDouble("concavity_worst"));
+                record.setConcave_pointsWorst(rs.getDouble("concave_points_worst"));
+                record.setSymmetryWorst(rs.getDouble("symmetry_worst"));
+                record.setFractal_dimensionWorst(rs.getDouble("fractal_dimension_worst"));
+                return record;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Connection Failed");
+            ex.printStackTrace();
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return null;
+        }
+        return null;
     }
 }

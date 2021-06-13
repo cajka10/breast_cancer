@@ -1,5 +1,7 @@
 package Controllers;
 
+import Entity.Enum.WindowMode;
+import Entity.PatientRecord;
 import Services.LoginService;
 import Services.MainService;
 import Services.UserService;
@@ -17,6 +19,8 @@ import java.util.ResourceBundle;
 
 
 public class MainWindowController implements Initializable {
+    @FXML
+    private  Button patientDetailButton;
 
     private LoginService loginService;
     private UserService userService;
@@ -29,10 +33,10 @@ public class MainWindowController implements Initializable {
     private Button newPatientButton;
 
     @FXML
-    private TableView patientView;
+    private TableView<PatientRecord> patientView;
 
     @FXML
-    private TableView patientRecordsTableView;
+    private TableView<PatientRecord> patientRecordsTableView;
 
     @FXML
     private TableView usersTableView;
@@ -116,10 +120,51 @@ public class MainWindowController implements Initializable {
 
     public void addPatientByDoctorButtonOnAction(ActionEvent event) {
         try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/Screens/NewPatientRecord.fxml"
+                    )
+            );
             Stage newStage = new Stage();
-            Scene newScene = new Scene(FXMLLoader.load(getClass().getResource("/Screens/NewPatientRecord.fxml")));
-            newStage.setScene(newScene);
-            newStage.show();
+            newStage.setScene(new Scene(loader.load()));
+            NewPatientRecordController patientRecordController = loader.getController();
+            patientRecordController.init(null, WindowMode.NEW);
+
+            newStage.showAndWait();
+            this.reloadPatients();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Nepodarilo sa otvoriť okno.");
+
+            alert.showAndWait();
+        }
+    }
+
+    public void patientDetailButtonOnAction(ActionEvent event) {
+        TablePosition pos = this.patientView.getSelectionModel().getSelectedCells().get(0);
+        int row = pos.getRow();
+
+        Object ob = this.patientView.getColumns().get(0).getCellObservableValue(row).getValue();
+
+        int patientId = (new Double(ob.toString())).intValue();
+        PatientRecord record = this.mainService.getPatientById(patientId);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/Screens/NewPatientRecord.fxml"
+                    )
+            );
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(loader.load()));
+            NewPatientRecordController patientRecordController = loader.getController();
+            patientRecordController.init(record, WindowMode.DETAIL);
+
+            newStage.showAndWait();
 
         } catch (IOException ex) {
             ex.printStackTrace();

@@ -16,7 +16,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+//TODO dorobiť Edit záznamov, loggovanie, odomykanie tabov
 public class MainService {
     private ObservableList<ObservableList> data;
     private PatientRepository patientRepository;
@@ -27,10 +27,10 @@ public class MainService {
         this.patientRepository = new PatientRepository();
     }
 
-    public TableView getPatients() {
+    public TableView<PatientRecord> getPatients() {
         return patientRepository.getPatientColumns(PATIENT_TABLE);
     }
-    public TableView getPatientsRecords() {
+    public TableView<PatientRecord> getPatientsRecords() {
         return patientRepository.getPatientColumns(PATIENT_RECORD_TABLE);
     }
 
@@ -93,11 +93,14 @@ public class MainService {
             patient.setFractal_dimensionWorst(Double.valueOf(record[29]));
 
             this.patientRepository.addPatient(patient, PATIENT_RECORD_TABLE );
-
         }
     }
 
     public void addPatientRecord(PatientRecord record) {
         this.patientRepository.addPatient(record, PATIENT_TABLE);
+    }
+
+    public PatientRecord getPatientById(int patientId) {
+        return this.patientRepository.getPatientById(patientId, this.PATIENT_TABLE);
     }
 }

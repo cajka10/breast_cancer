@@ -3,14 +3,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -28,7 +25,9 @@
                            <items>
                               <AnchorPane prefHeight="466.0" prefWidth="163.0">
                                  <children>
-                                    <Button layoutX="42.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" text="Nový pacient" />
+                                    <Button fx:id="addPatientByDoctorButton" layoutX="42.0" layoutY="33.0" mnemonicParsing="false" onAction="#addPatientByDoctorButtonOnAction" prefHeight="25.0" prefWidth="138.0" text="Nový pacient" />
+                                    <Button fx:id="refreshButton" layoutX="40.0" layoutY="125.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="26.0" prefWidth="141.0" text="Obnoviť" />
+                                    <Button fx:id="patientDetailButton" layoutX="41.0" layoutY="79.0" mnemonicParsing="false" onAction="#patientDetailButtonOnAction" prefHeight="25.0" prefWidth="138.0" text="Detail pacienta" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="388.0" prefWidth="246.0">
@@ -40,10 +39,8 @@
                                        <textFill>
                                           <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
                                        </textFill></Label>
-                                    <TableView layoutX="4.0" prefHeight="520.0" prefWidth="662.0">
+                                    <TableView fx:id="patientView" layoutX="4.0" prefHeight="520.0" prefWidth="662.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -62,25 +59,40 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="137.0">
                                  <children>
-                                    <Button fx:id="newPatientButton" layoutX="56.0" layoutY="31.0" mnemonicParsing="false" onAction="#newPatientOnAction" prefHeight="25.0" prefWidth="154.0" text="Pridať Uživateľa" />
-                                    <Button layoutX="56.0" layoutY="71.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" text="Import data" />
+                                    <Button fx:id="importButton" layoutX="55.0" layoutY="30.0" mnemonicParsing="false" onAction="#importButtonOnAction" prefHeight="25.0" prefWidth="154.0" text="Import data" />
+                                    <Button fx:id="importPatientButton" layoutX="53.0" layoutY="68.0" mnemonicParsing="false" onAction="#importPatientButtonOnAction" prefHeight="26.0" prefWidth="155.0" text="Import pacienta" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="522.0" prefWidth="502.0">
+                                 <children>
+                                    <TableView fx:id="patientRecordsTableView" layoutX="2.0" prefHeight="515.0" prefWidth="620.0">
+                                      <columns>
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Uzivatelia">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.29797979797979796" prefHeight="523.0" prefWidth="900.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="137.0">
+                                 <children>
+                                    <Button fx:id="newPatientButton" layoutX="56.0" layoutY="31.0" mnemonicParsing="false" onAction="#newUserOnAction" prefHeight="25.0" prefWidth="154.0" text="Pridať Uživateľa" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="741.0">
                                  <children>
-                                    <TextField fx:id="userNameTextField" layoutX="314.0" layoutY="36.0" />
-                                    <Label layoutX="133.0" layoutY="36.0" prefHeight="25.0" prefWidth="159.0" text="Užívateľské meno">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <ComboBox fx:id="roleComboBox" layoutX="314.0" layoutY="78.0" prefWidth="150.0" />
-                                    <Label layoutX="133.0" layoutY="78.0" prefHeight="25.0" prefWidth="159.0" text="Užívateľská rola">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Button fx:id="confirmButton" layoutX="235.0" layoutY="131.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="25.0" prefWidth="115.0" text="Potvrdiť" />
+                                    <TableView fx:id="usersTableView" layoutX="6.0" layoutY="4.0" prefHeight="507.0" prefWidth="618.0">
+                                      <columns>
+                                      </columns>
+                                    </TableView>
                                  </children>
                               </AnchorPane>
                           </items>
@@ -95,8 +107,7 @@
             <Insets />
          </VBox.margin>
          <buttons>
-            <Button mnemonicParsing="false" text="Button" />
-            <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonOnAction" text="Cancel" />
          </buttons>
          <padding>
             <Insets right="15.0" />

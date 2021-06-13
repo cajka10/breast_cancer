@@ -63,8 +63,6 @@ public class LoginController {
                     } else {
                         this.openMainWindow();
                     }
-
-
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
@@ -78,6 +76,7 @@ public class LoginController {
     }
 
     private void setVerifyPasswordVisible() {
+        this.psswdTextField.setText("");
         this.userNameTextField.setDisable(true);
         this.psswdVerifyTextField.setVisible(true);
         this.verifyPsswdLabel.setVisible(true);

@@ -1,18 +1,26 @@
 package Controllers;
 
+import Entity.Enum.WindowMode;
 import Entity.PatientRecord;
 import Services.MainService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
-public class NewPatientRecordController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class NewPatientRecordController implements Initializable {
 
     @FXML
     private Button cancelButton;
+    @FXML
+    private Button confirmButton;
     @FXML
     private TextField radiusMeanTextField;
     @FXML
@@ -76,15 +84,68 @@ public class NewPatientRecordController {
 
     private MainService mainService;
 
+    private WindowMode mode;
+    private PatientRecord patientRecord;
+
     public NewPatientRecordController() {
+
         this.mainService = new MainService();
     }
 
+    public void init(PatientRecord record, WindowMode mode) {
+        this.mode = mode;
+        if (record != null) {
+            this.mapFromPatient(record);
+            if (mode.equals(WindowMode.DETAIL)) {
+                this.confirmButton.setVisible(false);
+            }
+        }
+    }
+
+    public void mapFromPatient(PatientRecord record) {
+        this.radiusMeanTextField.setText(String.valueOf(record.getRadiusMean()));
+        this.textureMeanTextField.setText(String.valueOf(record.getTextureMean()));
+        this.perimeterMeanTextField.setText(String.valueOf(record.getPerimeterMean()));
+        this.areaMeanTextField.setText(String.valueOf(record.getAreaMean()));
+        this.smoothnessMeanTextField.setText(Double.toString(record.getSmoothnessMean()));
+        this.compactnessMeanTextField.setText(Double.toString(record.getCompactnessMean()));
+        this.concavePointsMeanTextField.setText(Double.toString(record.getConcave_pointsMean()));
+        this.symmetryMeanTextField.setText(Double.toString(record.getSymmetryMean()));
+        this.fractaDimensionMeanTextField.setText(Double.toString(record.getFractal_dimensionMean()));
+        this.concavityMeanTextField.setText(Double.toString(record.getConcavityMean()));
+
+        this.radiusSETextField.setText(Double.toString(record.getRadiusSe()));
+        this.textureSETextField1.setText(Double.toString(record.getTextureSe()));
+        this.perimeterSETextField.setText(Double.toString(record.getPerimeterSe()));
+        this.areaSETextField.setText(Double.toString(record.getAreaSe()));
+        this.smoothnessSETextField.setText(Double.toString(record.getSmoothnessSe()));
+        this.compactnessSETextField.setText(Double.toString(record.getCompactnessSe()));
+        this.concavitySETextField.setText(Double.toString(record.getConcavitySe()));
+        this.concavePointsSETextField.setText(Double.toString(record.getConcave_pointsSe()));
+        this.symmetrySETextField.setText(Double.toString(record.getSymmetrySe()));
+        this.fractaDimensionSETextField.setText(Double.toString(record.getFractal_dimensionSe()));
+
+        this.radiusWorstTextField.setText(Double.toString(record.getRadiusWorst()));
+        this.textureWorstTextField.setText(Double.toString(record.getTextureWorst()));
+        this.perimeterWorstTextField.setText(Double.toString(record.getPerimeterWorst()));
+        this.areaWorstTextField.setText(Double.toString(record.getAreaWorst()));
+        this.smoothnessWorstTextField.setText(Double.toString(record.getSmoothnessWorst()));
+        this.compactnessWorstTextField.setText(Double.toString(record.getCompactnessWorst()));
+        this.concavityWorstTextField.setText(Double.toString(record.getConcavityWorst()));
+        this.concavePointsWorstTextField.setText(Double.toString(record.getConcave_pointsWorst()));
+        this.symmetryWorstTextField.setText(Double.toString(record.getSymmetryWorst()));
+        this.fractaDimensionWorstTextField.setText(Double.toString(record.getFractal_dimensionWorst()));
+    }
+
     public void confirmButtonOnAction(ActionEvent event) {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        PatientRecord record = this.mapPatient();
-        this.mainService.addPatientRecord(record);
-        stage.close();
+        if (mode.equals(WindowMode.NEW)) {
+            Stage stage = (Stage) cancelButton.getScene().getWindow();
+            PatientRecord record = this.mapPatient();
+            this.mainService.addPatientRecord(record);
+            stage.close();
+        } else if (mode.equals(WindowMode.EDIT)) {
+
+        }
     }
 
     private PatientRecord mapPatient() {
@@ -147,5 +208,11 @@ public class NewPatientRecordController {
     public void cancelButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+//        this.mapFromPatient(this.patientRecord);
     }
 }

@@ -4,6 +4,7 @@ import Entity.Enum.TumorType;
 
 public class PatientRecord {
 
+    private int recordId;
     private double radiusMean;
     private double textureMean;
     private double perimeterMean;
@@ -38,6 +39,14 @@ public class PatientRecord {
     private double fractal_dimensionWorst;
 
     private TumorType tumorType;
+
+    public int getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(int recordId) {
+        this.recordId = recordId;
+    }
 
     public double getRadiusMean() {
         return radiusMean;

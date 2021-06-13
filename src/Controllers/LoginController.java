@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -39,6 +40,8 @@ public class LoginController {
     @FXML
     private Label verifyPsswdLabel;
 
+    static final Logger logger = Logger.getLogger(LoginController.class.getName());
+
     public LoginController() {
         loginService = new LoginService();
     }
@@ -61,6 +64,7 @@ public class LoginController {
                         this.setVerifyPasswordVisible();
                         this.newUser = user.isNew();
                     } else {
+                        logger.debug("Autentification passed. Logging in.");
                         this.openMainWindow();
                     }
                 } else {
@@ -69,6 +73,7 @@ public class LoginController {
                     alert.setHeaderText(null);
                     alert.setContentText("Nesprávne meno alebo heslo.");
 
+                    logger.debug("Error - Autentification failed. Wrong Name of password.");
                     alert.showAndWait();
                 }
             }
@@ -96,6 +101,8 @@ public class LoginController {
             alert.setTitle("Error Dialog");
             alert.setHeaderText(null);
             alert.setContentText("Nepodarilo sa spustiť aplikáciu.");
+            logger.debug("Error - Failed to open application.");
+            logger.debug(ex.getMessage());
 
             alert.showAndWait();
         }

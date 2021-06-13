@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileReader;
@@ -20,6 +21,7 @@ import java.util.List;
 public class MainService {
     private ObservableList<ObservableList> data;
     private PatientRepository patientRepository;
+    static final Logger logger = Logger.getLogger(MainService.class.getName());
 
     private String PATIENT_TABLE = "PATIENT";
     private String PATIENT_RECORD_TABLE = "PATIENT_RECORD";
@@ -97,7 +99,11 @@ public class MainService {
     }
 
     public void addPatientRecord(PatientRecord record) {
-        this.patientRepository.addPatient(record, PATIENT_TABLE);
+        if (this.patientRepository.addPatient(record, PATIENT_TABLE) > 0){
+            this.logger.debug("Patient succesfully added.");
+        }else{
+            this.logger.debug("Error - Patient not added.");
+        }
     }
 
     public PatientRecord getPatientById(int patientId) {

@@ -17,7 +17,7 @@ import java.sql.SQLException;
 
 public class PatientRepository {
 
-    public void addPatient(PatientRecord record, String tableName) {
+    public int addPatient(PatientRecord record, String tableName) {
         int row = 0;
         String query = "insert into public." + tableName + " (radius_mean, texture_mean, perimeter_mean, area_mean, smoothness_mean, compactness_mean, concavity_mean, concave_points_mean," +
                 " symmetry_mean, fractal_dimension_mean, radius_se, texture_se, perimeter_se, area_se, smoothness_se, compactness_se, concavity_se, concave_points_se, symmetry_seq, " +
@@ -66,6 +66,7 @@ public class PatientRepository {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+        return row;
     }
 
     private Connection getConnection() {

@@ -109,4 +109,12 @@ public class MainService {
     public PatientRecord getPatientById(int patientId) {
         return this.patientRepository.getPatientById(patientId, this.PATIENT_TABLE);
     }
+
+    public void editPatient(PatientRecord record) {
+        if (this.patientRepository.editPatient(record, this.PATIENT_TABLE) > 0){
+            this.logger.debug("Patient: " + record.getRecordId() + " succesfully updated.");
+        }else{
+            this.logger.debug("Error - Patient: " + record.getRecordId() + " not updated.");
+        }
+    }
 }

@@ -85,7 +85,7 @@ public class NewPatientRecordController implements Initializable {
     private MainService mainService;
 
     private WindowMode mode;
-    private PatientRecord patientRecord;
+    private int  patientRecordId;
 
     public NewPatientRecordController() {
 
@@ -94,6 +94,7 @@ public class NewPatientRecordController implements Initializable {
 
     public void init(PatientRecord record, WindowMode mode) {
         this.mode = mode;
+        this.patientRecordId = record.getRecordId();
         if (record != null) {
             this.mapFromPatient(record);
             if (mode.equals(WindowMode.DETAIL)) {
@@ -138,14 +139,15 @@ public class NewPatientRecordController implements Initializable {
     }
 
     public void confirmButtonOnAction(ActionEvent event) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        PatientRecord record = this.mapPatient();
         if (mode.equals(WindowMode.NEW)) {
-            Stage stage = (Stage) cancelButton.getScene().getWindow();
-            PatientRecord record = this.mapPatient();
             this.mainService.addPatientRecord(record);
-            stage.close();
         } else if (mode.equals(WindowMode.EDIT)) {
-
+            record.setRecordId(patientRecordId);
+            this.mainService.editPatient(record);
         }
+        stage.close();
     }
 
     private PatientRecord mapPatient() {
@@ -212,7 +214,5 @@ public class NewPatientRecordController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-//        this.mapFromPatient(this.patientRecord);
     }
 }

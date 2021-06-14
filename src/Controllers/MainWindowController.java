@@ -125,7 +125,7 @@ public class MainWindowController implements Initializable {
     }
 
     public void refreshButtonOnAction(ActionEvent event) {
-        this.patientView.refresh();
+        this.reloadPatients();
     }
 
     public void importPatientButtonOnAction(ActionEvent event) {
@@ -137,20 +137,42 @@ public class MainWindowController implements Initializable {
     }
 
     public void addPatientByDoctorButtonOnAction(ActionEvent event) {
+        this.openPatientWindow(WindowMode.NEW);
+        this.reloadPatients();
+    }
+
+    public void patientDetailButtonOnAction(ActionEvent event) {
+        this.openPatientWindow(WindowMode.DETAIL);
+    }
+
+    public void patientEditButtonOnAction(ActionEvent event) {
+        this.openPatientWindow(WindowMode.EDIT);
+        this.reloadPatients();
+    }
+
+    private void openPatientWindow(WindowMode mode){
+        PatientRecord record = null;
+        if (!mode.equals(WindowMode.NEW)) {
+            TablePosition pos = this.patientView.getSelectionModel().getSelectedCells().get(0);
+            int row = pos.getRow();
+
+            Object ob = this.getTableColumnByName(patientView, "patient_id").getCellObservableValue(row).getValue();
+
+            int patientId = (new Double(ob.toString())).intValue();
+             record = this.mainService.getPatientById(patientId);
+        }
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(
-                            "/Screens/NewPatientRecord.fxml"
+                            "/Screens/PatientWindow.fxml"
                     )
             );
             Stage newStage = new Stage();
             newStage.setScene(new Scene(loader.load()));
             NewPatientRecordController patientRecordController = loader.getController();
-            patientRecordController.init(null, WindowMode.NEW);
+            patientRecordController.init(record, mode);
 
             newStage.showAndWait();
-            this.reloadPatients();
-
         } catch (IOException ex) {
             ex.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -162,36 +184,9 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    public void patientDetailButtonOnAction(ActionEvent event) {
-        TablePosition pos = this.patientView.getSelectionModel().getSelectedCells().get(0);
-        int row = pos.getRow();
-
-        Object ob = this.patientView.getColumns().get(0).getCellObservableValue(row).getValue();
-
-        int patientId = (new Double(ob.toString())).intValue();
-        PatientRecord record = this.mainService.getPatientById(patientId);
-
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(
-                            "/Screens/NewPatientRecord.fxml"
-                    )
-            );
-            Stage newStage = new Stage();
-            newStage.setScene(new Scene(loader.load()));
-            NewPatientRecordController patientRecordController = loader.getController();
-            patientRecordController.init(record, WindowMode.DETAIL);
-
-            newStage.showAndWait();
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Nepodarilo sa otvoriť okno.");
-
-            alert.showAndWait();
-        }
+    private <T> TableColumn<T, ?> getTableColumnByName(TableView<T> tableView, String name) {
+        for (TableColumn<T, ?> col : tableView.getColumns())
+            if (col.getText().equals(name)) return col ;
+        return null ;
     }
 }

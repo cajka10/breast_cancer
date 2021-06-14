@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PatientRepository {
+    static final Logger logger = Logger.getLogger(PatientRepository.class.getName());
 
     public int addPatient(PatientRecord record, String tableName) {
         int row = 0;
@@ -59,7 +61,7 @@ public class PatientRepository {
 
             row = stmt.executeUpdate();
         } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            System.err.format("SQL State: %s= ?,%s", e.getSQLState(), e.getMessage());
             System.out.println(e.getSQLState());
 
         } catch (Exception e) {
@@ -109,11 +111,14 @@ public class PatientRepository {
         } catch (SQLException e) {
             System.out.println("Connection Failed");
             e.printStackTrace();
+            logger.debug("Error getting patients records.");
+            logger.debug(e.getMessage());
             return null;
 
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
+            logger.debug(e.getMessage());
             return null;
         }
         return tableView;
@@ -166,12 +171,102 @@ public class PatientRepository {
         } catch (SQLException ex) {
             System.out.println("Connection Failed");
             ex.printStackTrace();
+            logger.debug("Error while getting patient.");
+            logger.debug(ex.getMessage());
             return null;
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
+            logger.debug(e.getMessage());
             return null;
         }
         return null;
+    }
+
+    public int editPatient(PatientRecord patient, String table){
+        int row = 0;
+        String query = "Update public." + table +
+                " set " +
+                "  radius_mean = ?, " +
+                "  texture_mean = ?," +
+                "  perimeter_mean = ?," +
+                "  area_mean = ?," +
+                "  smoothness_mean = ?," +
+                "  compactness_mean = ?," +
+                "  concavity_mean = ?, " +
+                "  concave_points_mean = ?," +
+                "  symmetry_mean = ?," +
+                "  fractal_dimension_mean = ?," +
+                "  radius_se= ?," +
+                "  texture_se= ?," +
+                "  perimeter_se= ?," +
+                "  area_se= ?," +
+                "  smoothness_se= ?," +
+                "  compactness_se= ?," +
+                "  concavity_se= ?," +
+                "  concave_points_se= ?," +
+                "  symmetry_seq= ?," +
+                "  fractal_dimension_se= ?," +
+                "  radius_worst= ?," +
+                "  texture_worst= ?," +
+                "  perimeter_worst= ?," +
+                "  area_worst= ?," +
+                "  smoothness_worst= ?," +
+                "  compactness_worst= ?," +
+                "  concavity_worst= ?," +
+                "  concave_points_worst= ?," +
+                "  symmetry_worst= ?," +
+                "  fractal_dimension_worst= ?," +
+                "  class = ?" +
+                "  where patient_id = ? ";
+        try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
+            stmt.setDouble(1, patient.getRadiusMean());
+            stmt.setDouble(2, patient.getTextureMean());
+            stmt.setDouble(3, patient.getPerimeterMean());
+            stmt.setDouble(4, patient.getAreaMean());
+            stmt.setDouble(5, patient.getSmoothnessMean());
+            stmt.setDouble(6, patient.getCompactnessMean());
+            stmt.setDouble(7, patient.getConcavityMean());
+            stmt.setDouble(8, patient.getConcave_pointsMean());
+            stmt.setDouble(9, patient.getSymmetryMean());
+            stmt.setDouble(10, patient.getFractal_dimensionMean());
+
+            stmt.setDouble(11, patient.getRadiusSe());
+            stmt.setDouble(12, patient.getTextureSe());
+            stmt.setDouble(13, patient.getPerimeterSe());
+            stmt.setDouble(14, patient.getAreaSe());
+            stmt.setDouble(15, patient.getSmoothnessSe());
+            stmt.setDouble(16, patient.getCompactnessSe());
+            stmt.setDouble(17, patient.getConcavitySe());
+            stmt.setDouble(18, patient.getConcave_pointsSe());
+            stmt.setDouble(19, patient.getSymmetrySe());
+            stmt.setDouble(20, patient.getFractal_dimensionSe());
+
+            stmt.setDouble(21, patient.getRadiusWorst());
+            stmt.setDouble(22, patient.getTextureWorst());
+            stmt.setDouble(23, patient.getPerimeterWorst());
+            stmt.setDouble(24, patient.getAreaWorst());
+            stmt.setDouble(25, patient.getSmoothnessWorst());
+            stmt.setDouble(26, patient.getCompactnessWorst());
+            stmt.setDouble(27, patient.getConcavityWorst());
+            stmt.setDouble(28, patient.getConcave_pointsWorst());
+            stmt.setDouble(29, patient.getSymmetryWorst());
+            stmt.setDouble(30, patient.getFractal_dimensionWorst());
+
+            stmt.setString(31, "B");
+            stmt.setInt(32, patient.getRecordId());
+
+            row = stmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Connection Failed");
+            ex.printStackTrace();
+            logger.debug("Error updating patient with id: " + patient.getRecordId());
+            logger.debug(ex.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            logger.debug(e.getMessage());
+        }
+        return row;
     }
 }

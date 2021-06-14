@@ -1,5 +1,6 @@
 package Controllers;
 
+import Entity.Enum.TumorType;
 import Entity.Enum.WindowMode;
 import Entity.PatientRecord;
 import Services.MainService;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -15,7 +17,7 @@ import javafx.stage.Window;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NewPatientRecordController implements Initializable {
+public class PatientWindowController implements Initializable {
 
     @FXML
     private Button cancelButton;
@@ -81,21 +83,23 @@ public class NewPatientRecordController implements Initializable {
     private TextField fractaDimensionSETextField;
     @FXML
     private TextField fractaDimensionWorstTextField;
+    @FXML
+    private ComboBox<TumorType> tumorTypeComboBox;
 
     private MainService mainService;
 
     private WindowMode mode;
     private int  patientRecordId;
 
-    public NewPatientRecordController() {
+    public PatientWindowController() {
 
         this.mainService = new MainService();
     }
 
     public void init(PatientRecord record, WindowMode mode) {
         this.mode = mode;
-        this.patientRecordId = record.getRecordId();
         if (record != null) {
+            this.patientRecordId = record.getRecordId();
             this.mapFromPatient(record);
             if (mode.equals(WindowMode.DETAIL)) {
                 this.confirmButton.setVisible(false);
@@ -136,6 +140,7 @@ public class NewPatientRecordController implements Initializable {
         this.concavePointsWorstTextField.setText(Double.toString(record.getConcave_pointsWorst()));
         this.symmetryWorstTextField.setText(Double.toString(record.getSymmetryWorst()));
         this.fractaDimensionWorstTextField.setText(Double.toString(record.getFractal_dimensionWorst()));
+        this.tumorTypeComboBox.setValue(record.getTumorType());
     }
 
     public void confirmButtonOnAction(ActionEvent event) {
@@ -193,6 +198,7 @@ public class NewPatientRecordController implements Initializable {
             record.setSymmetryMean(Double.parseDouble(this.symmetryMeanTextField.getText().equals("") ? "0" : this.symmetryMeanTextField.getText()));
             record.setSymmetrySe(Double.parseDouble(this.symmetrySETextField.getText().equals("") ? "0" : this.symmetrySETextField.getText()));
             record.setSymmetryWorst(Double.parseDouble(this.symmetryWorstTextField.getText().equals("") ? "0" : this.symmetryWorstTextField.getText()));
+            record.setTumorType(this.tumorTypeComboBox.getValue());
 
         } catch (NumberFormatException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -207,12 +213,14 @@ public class NewPatientRecordController implements Initializable {
         return record;
     }
 
-    public void cancelButtonOnAction(ActionEvent event) {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.tumorTypeComboBox.getItems().addAll(TumorType.values());
+    }
+
+    public void cancelButtonOnAction(ActionEvent event) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 }

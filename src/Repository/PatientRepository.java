@@ -1,6 +1,7 @@
 package Repository;
 
 import Core.DbConnection;
+import Entity.Enum.TumorType;
 import Entity.PatientRecord;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -125,14 +126,14 @@ public class PatientRepository {
     }
 
     public PatientRecord getPatientById(int patientId, String patient_table) {
-        String query = "Select * from public." + patient_table + " where patient_id = ?";
+        String query = "Select * from public." + patient_table + " where record_id = ?";
         try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
             stmt.setInt(1, patientId);
             PatientRecord record = new PatientRecord();
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                record.setRecordId(rs.getInt("patient_id"));
+                record.setRecordId(rs.getInt("record_id"));
                 record.setRadiusMean(rs.getDouble("radius_mean"));
                 record.setTextureMean(rs.getDouble("texture_mean"));
                 record.setPerimeterMean(rs.getDouble("perimeter_mean"));
@@ -165,6 +166,9 @@ public class PatientRepository {
                 record.setConcave_pointsWorst(rs.getDouble("concave_points_worst"));
                 record.setSymmetryWorst(rs.getDouble("symmetry_worst"));
                 record.setFractal_dimensionWorst(rs.getDouble("fractal_dimension_worst"));
+
+                record.setTumorType(TumorType.getValueOf(rs.getString("class").replaceAll("\\s+","")));
+
                 return record;
             }
 
@@ -218,7 +222,7 @@ public class PatientRepository {
                 "  symmetry_worst= ?," +
                 "  fractal_dimension_worst= ?," +
                 "  class = ?" +
-                "  where patient_id = ? ";
+                "  where record_id = ? ";
         try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
             stmt.setDouble(1, patient.getRadiusMean());
             stmt.setDouble(2, patient.getTextureMean());

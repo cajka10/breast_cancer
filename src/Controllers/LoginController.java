@@ -107,6 +107,7 @@ public class LoginController {
             alert.setTitle("Error Dialog");
             alert.setHeaderText(null);
             alert.setContentText("Nepodarilo sa spustiť aplikáciu.");
+
             logger.debug("Error - Failed to open application.");
             logger.debug(ex.getMessage());
 

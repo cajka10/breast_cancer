@@ -1,17 +1,20 @@
 package Entity.Enum;
 
 public enum TumorType {
-    MALIGNANT('M'),
-    BENIGM('B');
+    MALIGNANT("M"),
+    BENIGM("B"),
+    UNKNOWN("U");
 
-    private char b;
-    TumorType(char b) {
+    private String b;
+    TumorType(String b) {
         this.b = b;
     }
 
-    private TumorType valueOf(char b){
+    public static TumorType getValueOf(String b){
+        if (b.equals(""))
+            return TumorType.UNKNOWN;
         for (TumorType type : values()){
-            if (type.b == b){
+            if (type.b.equals(b)){
                 return type;
             }
         }

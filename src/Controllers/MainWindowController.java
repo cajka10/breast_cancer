@@ -156,7 +156,7 @@ public class MainWindowController implements Initializable {
             TablePosition pos = this.patientView.getSelectionModel().getSelectedCells().get(0);
             int row = pos.getRow();
 
-            Object ob = this.getTableColumnByName(patientView, "patient_id").getCellObservableValue(row).getValue();
+            Object ob = this.getTableColumnByName(patientView, "record_id").getCellObservableValue(row).getValue();
 
             int patientId = (new Double(ob.toString())).intValue();
              record = this.mainService.getPatientById(patientId);
@@ -169,7 +169,8 @@ public class MainWindowController implements Initializable {
             );
             Stage newStage = new Stage();
             newStage.setScene(new Scene(loader.load()));
-            NewPatientRecordController patientRecordController = loader.getController();
+            PatientWindowController patientRecordController = loader.getController();
+            assert record != null;
             patientRecordController.init(record, mode);
 
             newStage.showAndWait();

@@ -96,7 +96,11 @@ public class PatientRepository {
                 ObservableList<Object> row = FXCollections.observableArrayList();
                 for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
                     //Columns
-                    row.add(rs.getDouble(i));
+                    try {
+                        row.add(rs.getDouble(i));
+                    } catch (Exception ex){
+                        row.add(rs.getString(i).replaceAll("\\s+",""));
+                    }
                 }
                 System.out.println("Row [1] added " + row);
                 data.add(row);

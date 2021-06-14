@@ -1,5 +1,6 @@
 package Controllers;
 
+import Entity.Enum.UserRole;
 import Entity.Enum.WindowMode;
 import Entity.PatientRecord;
 import Services.LoginService;
@@ -41,11 +42,28 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableView usersTableView;
 
+    @FXML
+    private Tab adminTab;
+
+    @FXML
+    private Tab patientsTab;
+
+    @FXML
+    private Tab usersTab;
+
+
     public MainWindowController() {
         this.loginService = new LoginService();
         this.userService = new UserService();
         this.mainService = new MainService();
 
+    }
+
+    public void setUserEnvironment(UserRole role){
+        if (role.equals(UserRole.DOCTOR)){
+            adminTab.setDisable(true);
+            usersTab.setDisable(true);
+        }
     }
 
     public void newUserOnAction(ActionEvent event) {

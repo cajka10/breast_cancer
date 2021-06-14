@@ -91,9 +91,15 @@ public class LoginController {
         try {
             Stage stage = (Stage) loginButton.getScene().getWindow();
             stage.close();
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/Screens/MainWindow.fxml")
+            );
+
             Stage newStage = new Stage();
-            Scene newScene = new Scene(FXMLLoader.load(getClass().getResource("/Screens/MainWindow.fxml")));
-            newStage.setScene(newScene);
+            newStage.setScene(new Scene(loader.load()));
+            MainWindowController windowController = loader.getController();
+            windowController.setUserEnvironment(this.user.getRole());
+
             newStage.show();
         } catch (IOException ex) {
             ex.printStackTrace();

@@ -17,7 +17,7 @@
    <children>
       <TabPane prefHeight="578.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Pacienti">
+          <Tab fx:id="patientsTab" text="Pacienti">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="534.0" prefWidth="900.0">
                      <children>
@@ -51,7 +51,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Admin">
+          <Tab fx:id="adminTab" text="Admin">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -76,7 +76,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Uzivatelia">
+            <Tab fx:id="usersTab" text="Uzivatelia">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

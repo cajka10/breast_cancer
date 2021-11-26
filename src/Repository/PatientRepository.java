@@ -1,8 +1,8 @@
 package Repository;
 
 import Core.DbConnection;
-import Entity.Enum.TumorType;
-import Entity.PatientRecord;
+import Core.Entity.Enum.TumorType;
+import Core.Entity.PatientRecord;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

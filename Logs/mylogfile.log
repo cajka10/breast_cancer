@@ -1,0 +1,140 @@
+2021-06-13 19:12:47 DEBUG Main:15 - Program started.
+2021-06-13 19:35:46 DEBUG Main:15 - Program started.
+2021-06-13 21:33:04 DEBUG Main:15 - Program started.
+2021-06-13 21:33:13 DEBUG LoginService:30 - Login succesfull.
+2021-06-13 21:33:13 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-13 21:33:13 DEBUG LoginController:104 - Error - Failed to open application.
+2021-06-13 21:33:13 DEBUG LoginController:105 - 
+/E:/breast_cancer/out/production/breast_cancer/Screens/MainWindow.fxml
+
+2021-06-13 21:37:06 DEBUG Main:15 - Program started.
+2021-06-13 21:37:11 DEBUG LoginService:30 - Login succesfull.
+2021-06-13 21:37:11 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-13 21:38:11 DEBUG Main:15 - Program started.
+2021-06-13 21:38:16 DEBUG LoginService:30 - Login succesfull.
+2021-06-13 21:38:16 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-13 21:43:12 DEBUG Main:15 - Program started.
+2021-06-13 21:43:17 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-13 21:45:14 DEBUG Main:15 - Program started.
+2021-06-13 21:45:19 DEBUG LoginService:30 - Login succesfull.
+2021-06-13 21:45:19 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 09:51:51 DEBUG Main:15 - Program started.
+2021-06-14 09:51:56 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 09:55:44 DEBUG Main:15 - Program started.
+2021-06-14 09:56:34 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 09:56:34 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 10:01:40 DEBUG Main:15 - Program started.
+2021-06-14 10:01:46 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 13:59:42 DEBUG Main:15 - Program started.
+2021-06-14 13:59:53 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 13:59:53 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 14:00:15 DEBUG PatientRepository:266 - 
+2021-06-14 14:00:15 DEBUG MainService:117 - Error - Patient: 0 not updated.
+2021-06-14 14:04:27 DEBUG Main:15 - Program started.
+2021-06-14 14:04:32 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 14:04:32 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 14:05:21 DEBUG MainService:117 - Error - Patient: 0 not updated.
+2021-06-14 14:05:45 DEBUG Main:15 - Program started.
+2021-06-14 14:06:01 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 14:06:01 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 14:07:00 DEBUG PatientRepository:263 - Error updating patient with id: 0
+2021-06-14 14:07:00 DEBUG PatientRepository:264 - ERROR: syntax error at or near "="
+  Position: 39
+2021-06-14 14:07:00 DEBUG MainService:117 - Error - Patient: 0 not updated.
+2021-06-14 14:09:17 DEBUG Main:15 - Program started.
+2021-06-14 14:09:27 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 14:09:27 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 14:10:04 DEBUG MainService:117 - Error - Patient: 0 not updated.
+2021-06-14 14:15:29 DEBUG Main:15 - Program started.
+2021-06-14 14:15:45 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 14:15:45 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 14:16:06 DEBUG MainService:115 - Patient: 4 succesfully updated.
+2021-06-14 14:17:45 DEBUG Main:15 - Program started.
+2021-06-14 14:18:36 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 14:18:36 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 14:19:02 DEBUG MainService:115 - Patient: 4 succesfully updated.
+2021-06-14 14:24:05 DEBUG Main:15 - Program started.
+2021-06-14 14:24:12 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 14:24:12 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 16:23:32 DEBUG Main:15 - Program started.
+2021-06-14 16:23:37 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 16:23:37 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 16:23:52 DEBUG PatientRepository:183 - No enum constant Core.Entity.Enum.TumorType.B
+2021-06-14 16:28:28 DEBUG Main:15 - Program started.
+2021-06-14 16:28:33 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 16:28:33 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 16:28:58 DEBUG PatientRepository:183 - No enum constant Core.Entity.Enum.TumorType.B
+2021-06-14 16:30:43 DEBUG Main:15 - Program started.
+2021-06-14 16:30:47 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 16:30:47 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 16:30:58 DEBUG PatientRepository:183 - No enum constant Core.Entity.Enum.TumorType.B
+2021-06-14 16:33:40 DEBUG PatientRepository:183 - No enum constant Core.Entity.Enum.TumorType.M
+2021-06-14 16:34:44 DEBUG Main:15 - Program started.
+2021-06-14 16:34:50 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 16:34:50 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 16:34:58 DEBUG PatientRepository:184 - No enum constant Core.Entity.Enum.TumorType.B
+2021-06-14 16:36:21 DEBUG Main:15 - Program started.
+2021-06-14 16:36:26 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 16:36:32 DEBUG PatientRepository:184 - No enum constant Core.Entity.Enum.TumorType.B
+2021-06-14 16:38:38 DEBUG Main:15 - Program started.
+2021-06-14 16:38:43 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 16:38:43 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 16:44:56 DEBUG Main:15 - Program started.
+2021-06-14 16:45:04 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 16:45:04 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 16:48:01 DEBUG Main:15 - Program started.
+2021-06-14 16:48:06 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 16:48:06 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 17:24:01 DEBUG Main:15 - Program started.
+2021-06-14 17:24:06 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 17:24:06 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 17:25:01 DEBUG Main:15 - Program started.
+2021-06-14 17:25:06 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 17:25:06 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 17:25:16 DEBUG MainService:105 - Error - Patient not added.
+2021-06-14 17:25:25 DEBUG MainService:103 - Patient succesfully added.
+2021-06-14 17:27:39 DEBUG Main:15 - Program started.
+2021-06-14 17:27:59 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 17:27:59 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 17:34:10 DEBUG Main:15 - Program started.
+2021-06-14 17:34:15 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 17:34:15 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 17:38:02 DEBUG Main:15 - Program started.
+2021-06-14 17:38:08 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 17:38:08 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 17:39:43 DEBUG Main:15 - Program started.
+2021-06-14 17:39:48 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 17:39:48 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 17:40:04 DEBUG MainService:103 - Patient succesfully added.
+2021-06-14 17:44:40 DEBUG Main:15 - Program started.
+2021-06-14 17:59:10 DEBUG Main:15 - Program started.
+2021-06-14 17:59:16 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 17:59:16 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 17:59:38 DEBUG PatientRepository:178 - Error while getting patient.
+2021-06-14 17:59:38 DEBUG PatientRepository:179 - The column name patient_id was not found in this ResultSet.
+2021-06-14 18:00:25 DEBUG Main:15 - Program started.
+2021-06-14 18:00:31 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 18:00:31 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 18:01:11 DEBUG MainService:103 - Patient succesfully added.
+2021-06-14 21:09:08 DEBUG Main:15 - Program started.
+2021-06-14 21:19:15 DEBUG Main:15 - Program started.
+2021-06-14 21:19:24 DEBUG LoginController:67 - Autentification passed. Logging in.
+2021-06-14 21:24:35 DEBUG Main:15 - Program started.
+2021-06-14 21:24:40 DEBUG LoginService:30 - Login succesfull.
+2021-06-14 21:24:40 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-06-14 21:40:57 DEBUG Main:15 - Program started.
+2021-06-14 21:41:10 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-06-14 21:46:13 DEBUG Main:15 - Program started.
+2021-06-14 21:50:52 DEBUG Main:15 - Program started.
+2021-06-14 21:50:56 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-06-15 09:30:27 DEBUG Main:15 - Program started.
+2021-06-15 09:30:36 DEBUG LoginService:30 - Login succesfull.
+2021-06-15 09:30:36 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-10-26 21:52:09 DEBUG Main:15 - Program started.
+2021-10-26 21:52:20 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-10-27 08:42:31 DEBUG Main:15 - Program started.
+2021-10-27 08:42:40 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-10 16:57:30 DEBUG Main:15 - Program started.
+2021-11-10 16:57:42 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-10 17:25:50 DEBUG Main:15 - Program started.
+2021-11-10 17:26:11 DEBUG LoginController:66 - Autentification passed. Logging in.

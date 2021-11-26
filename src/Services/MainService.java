@@ -1,6 +1,6 @@
 package Services;
 
-import Entity.PatientRecord;
+import Core.Entity.PatientRecord;
 import Repository.PatientRepository;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;

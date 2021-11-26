@@ -1,4 +1,4 @@
-package Entity.Enum;
+package Core.Entity.Enum;
 
 public enum TumorType {
     MALIGNANT("M"),

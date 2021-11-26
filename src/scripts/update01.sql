@@ -74,7 +74,6 @@ CREATE TABLE "public"."patient_record" (
 )
 ;
 
-
 CREATE TABLE "public"."user_role" (
   "role_id" int4 NOT NULL,
   "name" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,

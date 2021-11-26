@@ -1,4 +1,4 @@
-package Entity.Enum;
+package Core.Entity.Enum;
 
 public enum UserRole {
     ADMIN(1),

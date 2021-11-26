@@ -1,6 +1,6 @@
-package Entity;
+package Core.Entity;
 
-import Entity.Enum.UserRole;
+import Core.Entity.Enum.UserRole;
 
 public class User {
 

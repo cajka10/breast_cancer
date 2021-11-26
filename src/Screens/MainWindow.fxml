@@ -77,7 +77,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab fx:id="usersTab" text="Uzivatelia">
+            <Tab fx:id="usersTab" text="Užívatelia">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -86,6 +86,7 @@
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="137.0">
                                  <children>
                                     <Button fx:id="newPatientButton" layoutX="56.0" layoutY="31.0" mnemonicParsing="false" onAction="#newUserOnAction" prefHeight="25.0" prefWidth="154.0" text="Pridať Uživateľa" />
+                                    <Button fx:id="newPatientButton1" layoutX="56.0" layoutY="71.0" mnemonicParsing="false" onAction="#newUserOnAction" prefHeight="25.0" prefWidth="154.0" text="Odstrániť Uživateľa" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="741.0">

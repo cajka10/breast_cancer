@@ -1,8 +1,8 @@
 package Controllers;
 
-import Entity.Enum.UserRole;
-import Entity.Enum.WindowMode;
-import Entity.PatientRecord;
+import Core.Entity.Enum.UserRole;
+import Core.Entity.Enum.WindowMode;
+import Core.Entity.PatientRecord;
 import Services.LoginService;
 import Services.MainService;
 import Services.UserService;
@@ -168,6 +168,7 @@ public class MainWindowController implements Initializable {
                     )
             );
             Stage newStage = new Stage();
+            newStage.setTitle("Patient window");
             newStage.setScene(new Scene(loader.load()));
             PatientWindowController patientRecordController = loader.getController();
             assert record != null;

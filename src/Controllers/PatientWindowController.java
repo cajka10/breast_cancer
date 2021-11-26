@@ -1,8 +1,8 @@
 package Controllers;
 
-import Entity.Enum.TumorType;
-import Entity.Enum.WindowMode;
-import Entity.PatientRecord;
+import Core.Entity.Enum.TumorType;
+import Core.Entity.Enum.WindowMode;
+import Core.Entity.PatientRecord;
 import Services.MainService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.net.URL;
 import java.util.ResourceBundle;

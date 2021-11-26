@@ -1,8 +1,8 @@
 package Repository;
 
 import Core.DbConnection;
-import Entity.Enum.UserRole;
-import Entity.User;
+import Core.Entity.Enum.UserRole;
+import Core.Entity.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

@@ -1,6 +1,6 @@
 package Controllers;
 
-import Entity.User;
+import Core.Entity.User;
 import Services.LoginService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,7 +59,6 @@ public class LoginController {
             if (userNameTextField.getText().isBlank() == false && psswdTextField.getText().isBlank() == false) {
                 this.user = loginService.validateLogin(userNameTextField.getText(), psswdTextField.getText());
                 if (user != null) {
-
                     if (user.isNew()) {
                         this.setVerifyPasswordVisible();
                         this.newUser = user.isNew();
@@ -96,6 +95,7 @@ public class LoginController {
             );
 
             Stage newStage = new Stage();
+            newStage.setTitle("Main window");
             newStage.setScene(new Scene(loader.load()));
             MainWindowController windowController = loader.getController();
             windowController.setUserEnvironment(this.user.getRole());

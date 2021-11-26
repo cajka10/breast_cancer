@@ -1,6 +1,6 @@
-package Entity;
+package Core.Entity;
 
-import Entity.Enum.TumorType;
+import Core.Entity.Enum.TumorType;
 
 public class PatientRecord {
 

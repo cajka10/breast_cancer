@@ -1,7 +1,7 @@
 package Services;
 
 import Core.PsswdUtils;
-import Entity.User;
+import Core.Entity.User;
 import Repository.UserRepository;
 
 import java.security.NoSuchAlgorithmException;

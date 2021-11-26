@@ -1,8 +1,8 @@
 package Services;
 
 import Core.PsswdUtils;
-import Entity.Enum.UserRole;
-import Entity.User;
+import Core.Entity.Enum.UserRole;
+import Core.Entity.User;
 import Repository.UserRepository;
 import javafx.scene.control.TableView;
 import org.apache.log4j.Logger;

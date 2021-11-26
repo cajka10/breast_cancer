@@ -1,6 +1,6 @@
 package Controllers;
 
-import Entity.Enum.UserRole;
+import Core.Entity.Enum.UserRole;
 import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

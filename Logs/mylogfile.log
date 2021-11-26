@@ -138,3 +138,45 @@
 2021-11-10 16:57:42 DEBUG LoginController:66 - Autentification passed. Logging in.
 2021-11-10 17:25:50 DEBUG Main:15 - Program started.
 2021-11-10 17:26:11 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 15:53:48 DEBUG Main:15 - Program started.
+2021-11-26 15:53:57 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 15:58:50 DEBUG Main:15 - Program started.
+2021-11-26 15:59:00 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:17:54 DEBUG Main:15 - Program started.
+2021-11-26 16:18:02 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:21:26 DEBUG MainService:105 - Error - Patient not added.
+2021-11-26 16:23:18 DEBUG Main:15 - Program started.
+2021-11-26 16:23:23 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:24:01 DEBUG MainService:103 - Patient succesfully added.
+2021-11-26 16:24:10 DEBUG LoginService:54 - Nepodarilo sa ulozit model.
+2021-11-26 16:24:50 DEBUG Main:15 - Program started.
+2021-11-26 16:31:10 DEBUG Main:15 - Program started.
+2021-11-26 16:31:15 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:34:35 DEBUG Main:15 - Program started.
+2021-11-26 16:34:41 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:38:37 DEBUG Main:15 - Program started.
+2021-11-26 16:38:42 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:40:34 DEBUG Main:15 - Program started.
+2021-11-26 16:41:05 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:43:36 DEBUG Main:15 - Program started.
+2021-11-26 16:43:42 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:44:40 DEBUG LoginService:23 - Nepodarilo sa načítať dáta
+2021-11-26 16:45:00 DEBUG Main:15 - Program started.
+2021-11-26 16:45:05 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:47:28 DEBUG LoginService:23 - Nepodarilo sa načítať dáta
+2021-11-26 16:49:49 DEBUG Main:15 - Program started.
+2021-11-26 16:49:56 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:51:34 DEBUG Main:15 - Program started.
+2021-11-26 16:51:42 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:53:37 DEBUG Main:15 - Program started.
+2021-11-26 16:53:42 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 16:58:01 DEBUG Main:15 - Program started.
+2021-11-26 16:58:07 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 17:01:02 DEBUG Main:15 - Program started.
+2021-11-26 17:01:07 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 17:04:00 DEBUG Main:15 - Program started.
+2021-11-26 17:05:11 DEBUG Main:15 - Program started.
+2021-11-26 17:05:17 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 17:05:26 DEBUG LoginService:54 - Nepodarilo sa ulozit model.
+2021-11-26 17:05:42 DEBUG LoginService:54 - Nepodarilo sa ulozit model.
+2021-11-26 17:05:54 DEBUG LoginService:54 - Nepodarilo sa ulozit model.

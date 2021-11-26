@@ -5,6 +5,7 @@ import Core.Entity.Enum.WindowMode;
 import Core.Entity.PatientRecord;
 import Services.LoginService;
 import Services.MainService;
+import Services.ModelService;
 import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +27,7 @@ public class MainWindowController implements Initializable {
     private LoginService loginService;
     private UserService userService;
     private MainService mainService;
+    private ModelService modelService;
 
     @FXML
     private Button cancelButton;
@@ -56,6 +58,7 @@ public class MainWindowController implements Initializable {
         this.loginService = new LoginService();
         this.userService = new UserService();
         this.mainService = new MainService();
+        this.modelService = new ModelService();
 
     }
 
@@ -87,7 +90,6 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         this.reloadPatients();
         this.reloadPatientRecords();
         this.reloadUsers();
@@ -190,5 +192,9 @@ public class MainWindowController implements Initializable {
         for (TableColumn<T, ?> col : tableView.getColumns())
             if (col.getText().equals(name)) return col ;
         return null ;
+    }
+
+    public void trainModelButtonOnAction(ActionEvent event) throws Exception {
+        this.modelService.train();
     }
 }

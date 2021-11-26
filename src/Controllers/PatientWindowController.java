@@ -4,6 +4,7 @@ import Core.Entity.Enum.TumorType;
 import Core.Entity.Enum.WindowMode;
 import Core.Entity.PatientRecord;
 import Services.MainService;
+import Services.ModelService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -86,13 +87,15 @@ public class PatientWindowController implements Initializable {
     private ComboBox<TumorType> tumorTypeComboBox;
 
     private MainService mainService;
+    private ModelService modelService;
 
     private WindowMode mode;
-    private int  patientRecordId;
+    private int patientRecordId;
 
     public PatientWindowController() {
 
         this.mainService = new MainService();
+        this.modelService = new ModelService();
     }
 
     public void init(PatientRecord record, WindowMode mode) {
@@ -147,6 +150,7 @@ public class PatientWindowController implements Initializable {
         PatientRecord record = this.mapPatient();
         if (mode.equals(WindowMode.NEW)) {
             this.mainService.addPatientRecord(record);
+            this.modelService.predict(record);
         } else if (mode.equals(WindowMode.EDIT)) {
             record.setRecordId(patientRecordId);
             this.mainService.editPatient(record);
@@ -197,7 +201,7 @@ public class PatientWindowController implements Initializable {
             record.setSymmetryMean(Double.parseDouble(this.symmetryMeanTextField.getText().equals("") ? "0" : this.symmetryMeanTextField.getText()));
             record.setSymmetrySe(Double.parseDouble(this.symmetrySETextField.getText().equals("") ? "0" : this.symmetrySETextField.getText()));
             record.setSymmetryWorst(Double.parseDouble(this.symmetryWorstTextField.getText().equals("") ? "0" : this.symmetryWorstTextField.getText()));
-            record.setTumorType(this.tumorTypeComboBox.getValue());
+//            record.setTumorType(this.tumorTypeComboBox.getValue());
 
         } catch (NumberFormatException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

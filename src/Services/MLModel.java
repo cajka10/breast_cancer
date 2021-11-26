@@ -9,6 +9,8 @@ import weka.core.Instances;
 import weka.core.SerializationHelper;
 import weka.core.converters.ConverterUtils;
 
+import java.util.Random;
+
 public class MLModel {
     static final Logger LOGGER = Logger.getLogger(LoginService.class.getName());
 
@@ -45,6 +47,29 @@ public class MLModel {
             LOGGER.debug("Nepodarilo sa vyhodnotit model.");
         }
         return eval.toSummaryString("", true);
+    }
+
+    public String getModelEvaluationWithCrossValidation(Classifier model, Instances train, Instances all) {
+        try {
+            Evaluation eval = new Evaluation(train);
+            eval.crossValidateModel(model, all, 10, new Random(1));
+            return eval.toSummaryString("", true);
+        } catch (Exception e) {
+            LOGGER.debug("Nepodarilo sa vyhodnotit model.");
+        }
+        return null;
+    }
+
+    public double[][] getConfusionMatrix(Classifier model, Instances train, Instances test) {
+        try {
+            Evaluation eval = new Evaluation(train);
+            eval.evaluateModel(model, test);
+            double[][] cm = eval.confusionMatrix();
+            return eval.confusionMatrix();
+        } catch (Exception e) {
+            LOGGER.debug("Nepodarilo sa vyhodnotit model.");
+        }
+        return null;
     }
 
     public void saveModel(Classifier model, String modelpath) {

@@ -45,7 +45,21 @@ public class ModelService {
 
         // Evaluate classifier with test dataset
         String evalSummary = mg.getModelEvaluation(ann, traindataset, testdataset);
-        System.out.println("Evaluation dpc: " + evalSummary);
-        mg.saveModel(ann, "E:\\breast_cancer\\Models");
+        double[][] confusionMatrix = mg.getConfusionMatrix(ann, traindataset, testdataset);
+        System.out.println("Evaluation summary: " + evalSummary);
+
+        System.out.println("Evaluation summary with cross validation: "
+                + mg.getModelEvaluationWithCrossValidation(ann, traindataset, dataset));
+
+        System.out.println("Confusion matrix: ");
+
+        for (int i = 0; i < confusionMatrix.length; i++) {
+            for (int j = 0; j < confusionMatrix[i].length; j++) {
+                System.out.print(confusionMatrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        mg.saveModel(ann, "E:\\breast_cancer\\Models\\MPModel.bin");
     }
 }

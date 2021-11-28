@@ -1,7 +1,10 @@
 package Services;
 
+import Core.Entity.Enum.ClassifierType;
 import Core.Entity.PatientRecord;
+import weka.classifiers.Classifier;
 import weka.classifiers.functions.MultilayerPerceptron;
+import weka.classifiers.trees.J48;
 import weka.core.Debug;
 import weka.core.Instances;
 import weka.filters.Filter;
@@ -15,7 +18,7 @@ public class ModelService {
     public void predict(PatientRecord record) {
         TestModel test = new TestModel();
         try {
-            test.predict(record, "E:\\breast_cancer\\", "E:\\breast_cancer\\cancerData.csv");
+            test.predict(record, "E:\\breast_cancer\\", "E:\\breast_cancer\\cancerData.csv", ClassifierType.J48);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -26,6 +29,7 @@ public class ModelService {
         String temp = System.getProperty("user.dir") + "\\cancerData.arff";
         System.out.println("Nacitam data .ARFF");
         Instances dataset = mg.loadData(temp);
+
 
         dataset.randomize(new Debug.Random());
         int trainSize = (int) Math.round(dataset.numInstances() * 0.8);
@@ -40,26 +44,30 @@ public class ModelService {
         Instances traindataset = new Instances(datasetnor, 0, trainSize);
         Instances testdataset = new Instances(datasetnor, trainSize, testSize);
 
-        System.out.println("Pred vybudovanim classifiera!");
-        MultilayerPerceptron ann = (MultilayerPerceptron) mg.buildClassifier(traindataset);
+        System.out.println("\nMultilayerPerceptron");
+        MultilayerPerceptron multilayerPerceptron = (MultilayerPerceptron) mg.buildMultilayerPerceptronClassifier(traindataset);
+        this.evaluateClassifier(mg, multilayerPerceptron, traindataset, testdataset);
+        mg.saveModel(multilayerPerceptron, "E:\\breast_cancer\\Models\\MPModel.bin");
 
+        System.out.println("\nJ48");
+        J48 j48 = (J48) mg.buildJ48Classifier(traindataset);
+        this.evaluateClassifier(mg, j48, traindataset, testdataset);
+        mg.saveModel(multilayerPerceptron, "E:\\breast_cancer\\Models\\J48Model.bin");
+
+    }
+
+    public void evaluateClassifier(MLModel mlModel, Classifier ann, Instances traindataset, Instances testdataset){
         // Evaluate classifier with test dataset
-        String evalSummary = mg.getModelEvaluation(ann, traindataset, testdataset);
-        double[][] confusionMatrix = mg.getConfusionMatrix(ann, traindataset, testdataset);
-        System.out.println("Evaluation summary: " + evalSummary);
+        double[][] confusionMatrix = mlModel.getConfusionMatrix(ann, traindataset, testdataset);
 
-        System.out.println("Evaluation summary with cross validation: "
-                + mg.getModelEvaluationWithCrossValidation(ann, traindataset, dataset));
+        System.out.println("Evaluation summary: " + mlModel.getModelEvaluation(ann, traindataset, testdataset));
 
         System.out.println("Confusion matrix: ");
-
         for (int i = 0; i < confusionMatrix.length; i++) {
             for (int j = 0; j < confusionMatrix[i].length; j++) {
                 System.out.print(confusionMatrix[i][j] + " ");
             }
             System.out.println();
         }
-
-        mg.saveModel(ann, "E:\\breast_cancer\\Models\\MPModel.bin");
     }
 }

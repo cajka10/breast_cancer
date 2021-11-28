@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.MultilayerPerceptron;
+import weka.classifiers.trees.J48;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
 import weka.core.converters.ConverterUtils;
@@ -27,15 +28,28 @@ public class MLModel {
         return dataset;
     }
 
-    public Classifier buildClassifier(Instances traindataset) {
+    public Classifier buildMultilayerPerceptronClassifier(Instances trainDataset) {
         MultilayerPerceptron m = new MultilayerPerceptron();
         m.setLearningRate(0.1);
         try {
-            m.buildClassifier(traindataset);
+            m.buildClassifier(trainDataset);
         } catch (Exception ex) {
-            LOGGER.debug("Nepodarilo sa natrenovať model.");
+            LOGGER.debug("Nepodarilo sa natrenovať model MultilayerPerceptron");
         }
         return m;
+    }
+
+    public Classifier buildJ48Classifier(Instances trainDataset) {
+        J48 j48 = new J48();
+        j48.setReducedErrorPruning(true);
+        j48.setBinarySplits(true);
+
+        try {
+            j48.buildClassifier(trainDataset);
+        } catch (Exception ex) {
+            LOGGER.debug("Nepodarilo sa natrenovať model MultilayerPerceptron");
+        }
+        return j48;
     }
 
     public String getModelEvaluation(Classifier model, Instances train, Instances test) {

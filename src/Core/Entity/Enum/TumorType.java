@@ -1,23 +1,28 @@
 package Core.Entity.Enum;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum TumorType {
     MALIGNANT("M"),
     BENIGM("B"),
     UNKNOWN("U");
 
-    private String b;
+    private String value;
+    private static Map map = new HashMap<>();
+
+
     TumorType(String b) {
-        this.b = b;
+        this.value = b;
     }
 
-    public static TumorType getValueOf(String b){
-        if (b.equals(""))
-            return TumorType.UNKNOWN;
+    static{
         for (TumorType type : values()){
-            if (type.b.equals(b)){
-                return type;
-            }
+            map.put(type.value, type);
         }
-        return null;
+    }
+
+    public static TumorType getValueOf(String value){
+        return (TumorType) map.get(value);
     }
 }

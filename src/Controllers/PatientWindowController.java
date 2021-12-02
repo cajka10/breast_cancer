@@ -158,7 +158,6 @@ public class PatientWindowController implements Initializable {
     }
 
     public void predictButtonOnAction(ActionEvent event) {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
         PatientRecord record = this.mapPatient();
         if (mode.equals(WindowMode.NEW)){
             TumorType type = this.modelService.predict(record);
@@ -170,7 +169,6 @@ public class PatientWindowController implements Initializable {
 
             this.tumorTypeComboBox.setValue(type);
         }
-
     }
 
     private PatientRecord mapPatient() {

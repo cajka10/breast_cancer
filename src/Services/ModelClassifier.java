@@ -35,41 +35,6 @@ public class ModelClassifier {
         dataRaw.setClassIndex(dataRaw.numAttributes() - 1);
     }
 
-    private void setAttributes() {
-        attributes.add(new Attribute("radius_mean"));
-        attributes.add(new Attribute("texture_mean"));
-        attributes.add(new Attribute("perimeter_mean"));
-        attributes.add(new Attribute("area_mean"));
-        attributes.add(new Attribute("smoothness_mean"));
-        attributes.add(new Attribute("compactness_mean"));
-        attributes.add(new Attribute("concavity_mean"));
-        attributes.add(new Attribute("concave_points_mean"));
-        attributes.add(new Attribute("symmetry_mean"));
-        attributes.add(new Attribute("fractal_dimension_mean"));
-
-        attributes.add(new Attribute("radius_se"));
-        attributes.add(new Attribute("texture_se"));
-        attributes.add(new Attribute("perimeter_se"));
-        attributes.add(new Attribute("area_se"));
-        attributes.add(new Attribute("smoothness_se"));
-        attributes.add(new Attribute("compactness_se"));
-        attributes.add(new Attribute("concavity_se"));
-        attributes.add(new Attribute("concave_points_se"));
-        attributes.add(new Attribute("symmetry_se"));
-        attributes.add(new Attribute("fractal_dimension_se"));
-
-        attributes.add(new Attribute("radius_worst"));
-        attributes.add(new Attribute("texture_worst"));
-        attributes.add(new Attribute("perimeter_worst"));
-        attributes.add(new Attribute("area_worst"));
-        attributes.add(new Attribute("smoothness_worst"));
-        attributes.add(new Attribute("compactness_worst"));
-        attributes.add(new Attribute("concavity_worst"));
-        attributes.add(new Attribute("concave_points_worst"));
-        attributes.add(new Attribute("symmetry_worst"));
-        attributes.add(new Attribute("fractal_dimension_worst"));
-    }
-
     public Instances createInstance(PatientRecord record) {
         dataRaw.clear();
         double[] instanceValue1 = getInstancesFromPatientRecord(record);
@@ -130,5 +95,41 @@ public class ModelClassifier {
     public Instances getInstance() {
         return dataRaw;
     }
+
+    private void setAttributes() {
+        attributes.add(new Attribute("radius_mean"));
+        attributes.add(new Attribute("texture_mean"));
+        attributes.add(new Attribute("perimeter_mean"));
+        attributes.add(new Attribute("area_mean"));
+        attributes.add(new Attribute("smoothness_mean"));
+        attributes.add(new Attribute("compactness_mean"));
+        attributes.add(new Attribute("concavity_mean"));
+        attributes.add(new Attribute("concave_points_mean"));
+        attributes.add(new Attribute("symmetry_mean"));
+        attributes.add(new Attribute("fractal_dimension_mean"));
+
+        attributes.add(new Attribute("radius_se"));
+        attributes.add(new Attribute("texture_se"));
+        attributes.add(new Attribute("perimeter_se"));
+        attributes.add(new Attribute("area_se"));
+        attributes.add(new Attribute("smoothness_se"));
+        attributes.add(new Attribute("compactness_se"));
+        attributes.add(new Attribute("concavity_se"));
+        attributes.add(new Attribute("concave_points_se"));
+        attributes.add(new Attribute("symmetry_se"));
+        attributes.add(new Attribute("fractal_dimension_se"));
+
+        attributes.add(new Attribute("radius_worst"));
+        attributes.add(new Attribute("texture_worst"));
+        attributes.add(new Attribute("perimeter_worst"));
+        attributes.add(new Attribute("area_worst"));
+        attributes.add(new Attribute("smoothness_worst"));
+        attributes.add(new Attribute("compactness_worst"));
+        attributes.add(new Attribute("concavity_worst"));
+        attributes.add(new Attribute("concave_points_worst"));
+        attributes.add(new Attribute("symmetry_worst"));
+        attributes.add(new Attribute("fractal_dimension_worst"));
+    }
+
 
 }

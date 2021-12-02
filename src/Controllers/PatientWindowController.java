@@ -150,12 +150,27 @@ public class PatientWindowController implements Initializable {
         PatientRecord record = this.mapPatient();
         if (mode.equals(WindowMode.NEW)) {
             this.mainService.addPatientRecord(record);
-            this.modelService.predict(record);
         } else if (mode.equals(WindowMode.EDIT)) {
             record.setRecordId(patientRecordId);
             this.mainService.editPatient(record);
         }
         stage.close();
+    }
+
+    public void predictButtonOnAction(ActionEvent event) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        PatientRecord record = this.mapPatient();
+        if (mode.equals(WindowMode.NEW)){
+            TumorType type = this.modelService.predict(record);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Predicted value");
+            alert.setHeaderText("Predikovaný typ rakoviny - " + type.toString());
+            alert.setContentText("Model určil, že daný pacien má rakovinu typu - " + type.toString());
+            alert.showAndWait();
+
+            this.tumorTypeComboBox.setValue(type);
+        }
+
     }
 
     private PatientRecord mapPatient() {
@@ -215,7 +230,6 @@ public class PatientWindowController implements Initializable {
 
         return record;
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

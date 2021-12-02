@@ -17,16 +17,15 @@ public class TestModel {
     }
 
 
-    public String predict(PatientRecord record, String modelPath, String datasetPath, ClassifierType type) throws Exception {
+    public String predict(PatientRecord record,  String datasetPath, String modelPath, ClassifierType type) throws Exception {
         Instances dataset = mg.loadData(datasetPath);
         String classname = "";
         Filter filter = new Normalize();
 
-        // divide dataset to train dataset 80% and test dataset 20%
         int trainSize = (int) Math.round(dataset.numInstances() * 0.8);
         int testSize = dataset.numInstances() - trainSize;
 
-        dataset.randomize(new Debug.Random(1));// if you comment this line the accuracy of the model will be droped from 96.6% to 80%
+        dataset.randomize(new Debug.Random(1));
 
         //Normalize dataset
         filter.setInputFormat(dataset);
@@ -37,17 +36,19 @@ public class TestModel {
 
         if (type == ClassifierType.MP) {
             // build classifier with train dataset
-            MultilayerPerceptron model = (MultilayerPerceptron) mg.buildMultilayerPerceptronClassifier(traindataset);
+            MultilayerPerceptron multilayerPerceptron = (MultilayerPerceptron) mg.buildMultilayerPerceptronClassifier(traindataset);
 
             // Evaluate classifier with test dataset
-            System.out.println("Evaluation: " + mg.getModelEvaluation(model, traindataset, testdataset));
+            System.out.println("Evaluation: " + mg.getModelEvaluation(multilayerPerceptron, traindataset, testdataset));
             //Save model
-            mg.saveModel(model, modelPath);
+            mg.saveModel(multilayerPerceptron, modelPath);
 
             //classifiy a single instance
             ModelClassifier cls = new ModelClassifier();
 
-            classname = cls.classifiy(Filter.useFilter(cls.createInstance(record), filter), datasetPath);
+            Instances mfp = Filter.useFilter(cls.createInstance(record), filter);
+            classname = cls.classifiy(mfp, modelPath);
+
             System.out.println("\n****************************************************");
             System.out.println("\n The class name for the instance is  " + classname);
             System.out.println("\n****************************************************");
@@ -61,12 +62,33 @@ public class TestModel {
             //classifiy a single instance
             ModelClassifier cls = new ModelClassifier();
 
-            classname = cls.classifiy(Filter.useFilter(cls.createInstance(record), filter), datasetPath);
+            Instances mfp = Filter.useFilter(cls.createInstance(record), filter);
+            classname = cls.classifiy(mfp, datasetPath);
             System.out.println("\n****************************************************");
             System.out.println("\n The class name for the instance is  " + classname);
             System.out.println("\n****************************************************");
         }
 
+        return classname;
+    }
+
+    public String classify(PatientRecord record, String modelPath){
+        ModelClassifier cls = new ModelClassifier();
+        Filter filter = new Normalize();
+
+        Instances dataset = cls.createInstance(record);
+        String classname = "";
+
+        try {
+            filter.setInputFormat(dataset);
+
+            classname = cls.classifiy(dataset, modelPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n****************************************************");
+        System.out.println("\n The class name for the instance is  " + classname);
+        System.out.println("\n****************************************************");
         return classname;
     }
 

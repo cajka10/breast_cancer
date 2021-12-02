@@ -1,6 +1,7 @@
 package Services;
 
 import Core.Entity.Enum.ClassifierType;
+import Core.Entity.Enum.TumorType;
 import Core.Entity.PatientRecord;
 import weka.classifiers.Classifier;
 import weka.classifiers.functions.MultilayerPerceptron;
@@ -15,13 +16,19 @@ public class ModelService {
     public ModelService() {
     }
 
-    public void predict(PatientRecord record) {
+    public TumorType predict(PatientRecord record) {
         TestModel test = new TestModel();
         try {
-            test.predict(record, "E:\\breast_cancer\\", "E:\\breast_cancer\\cancerData.csv", ClassifierType.J48);
+//            TumorType type = TumorType.valueOf(test.predict(this.getMockPatientRecord(),
+//                    "E:\\breast_cancer\\cancerData.arff",
+//                    "E:\\breast_cancer\\Models\\MPModel.bin", ClassifierType.MP));
+            TumorType type = TumorType.getValueOf(test.classify(this.getMockPatientRecord(),
+                    "E:\\breast_cancer\\Models\\MPModel.bin"));
+            return type;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return TumorType.UNKNOWN;
     }
 
     public void train() throws Exception {
@@ -69,5 +76,44 @@ public class ModelService {
             }
             System.out.println();
         }
+    }
+
+    private PatientRecord getMockPatientRecord(){
+        PatientRecord record = new PatientRecord();
+
+        record.setRadiusMean(17.99);
+        record.setTextureMean(10.38);
+        record.setPerimeterMean(122.8);
+        record.setAreaMean(1001);
+        record.setSmoothnessMean(0.1184);
+        record.setCompactnessMean(0.2776);
+        record.setConcave_pointsMean(0.3001);
+        record.setSymmetryMean(0.1471);
+        record.setFractal_dimensionMean(0.2419);
+        record.setConcavityMean(0.07871);
+
+        record.setRadiusSe(1.095);
+        record.setTextureSe(0.9053);
+        record.setPerimeterSe(8.589);
+        record.setAreaSe(153.4);
+        record.setSmoothnessSe(0.006399);
+        record.setCompactnessSe(0.04904);
+        record.setConcavitySe(0.05373);
+        record.setConcave_pointsSe(0.01587);
+        record.setSymmetrySe(0.03003);
+        record.setFractal_dimensionSe(0.006193);
+
+        record.setRadiusWorst(25.38);
+        record.setTextureWorst(25.38);
+        record.setPerimeterWorst(184.6);
+        record.setAreaWorst(2019);
+        record.setSmoothnessWorst(0.1622);
+        record.setCompactnessWorst(0.6656);
+        record.setConcavityWorst(0.7119);
+        record.setConcave_pointsWorst(0.2654);
+        record.setSymmetryWorst(0.4601);
+        record.setFractal_dimensionWorst(0.1189);
+        record.setTumorType(TumorType.BENIGM);
+        return record;
     }
 }

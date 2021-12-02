@@ -3,10 +3,7 @@ package Services;
 import Core.Entity.PatientRecord;
 import weka.classifiers.Classifier;
 import weka.classifiers.functions.MultilayerPerceptron;
-import weka.core.Attribute;
-import weka.core.DenseInstance;
-import weka.core.Instances;
-import weka.core.SerializationHelper;
+import weka.core.*;
 
 import java.util.ArrayList;
 
@@ -111,16 +108,19 @@ public class ModelClassifier {
                 record.getConcavityWorst(),
                 record.getConcave_pointsWorst(),
                 record.getSymmetryWorst(),
-                record.getFractal_dimensionWorst()};
+                record.getFractal_dimensionWorst(),
+                0};
         return outpurArray;
     }
 
     public String classifiy(Instances insts, String path) {
-        String result = "Not classified!!";
+        String result = "U";
         Classifier cls = null;
+        Instance ins = insts.firstInstance();
         try {
             cls = (MultilayerPerceptron) SerializationHelper.read(path);
             result = (String) classVal.get((int) cls.classifyInstance(insts.firstInstance()));
+
         } catch (Exception ex) {
 
         }

@@ -91,7 +91,6 @@ public class PatientRepository {
                 col.setCellValueFactory((Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>) param -> new SimpleStringProperty(param.getValue().get(j).toString()));
 
                 tableView.getColumns().addAll(col);
-                System.out.println("Column [" + i + "] ");
             }
 
             while (rs.next()) {
@@ -105,7 +104,6 @@ public class PatientRepository {
                         row.add(rs.getString(i).replaceAll("\\s+",""));
                     }
                 }
-                System.out.println("Row [1] added " + row);
                 data.add(row);
             }
             tableView.getItems().setAll(data);

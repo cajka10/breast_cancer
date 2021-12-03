@@ -129,7 +129,6 @@ public class UserRepository {
                 });
 
                 tableView.getColumns().addAll(col);
-                System.out.println("Column [" + i + "] ");
             }
 
             while (rs.next()) {
@@ -139,7 +138,6 @@ public class UserRepository {
                 row.add(rs.getString("user_name"));
                 row.add(rs.getString("role"));
 
-                System.out.println("Row [1] added " + row);
                 data.add(row);
             }
             tableView.getItems().setAll(data);

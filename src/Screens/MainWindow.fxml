@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainWindowController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #A3E0E6;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainWindowController">
    <children>
       <TabPane prefHeight="578.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -23,12 +23,24 @@
                      <children>
                         <SplitPane dividerPositions="0.2505567928730512" focusTraversable="true" prefHeight="527.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <items>
-                              <AnchorPane prefHeight="466.0" prefWidth="163.0" SplitPane.resizableWithParent="false">
+                              <AnchorPane prefHeight="466.0" prefWidth="163.0" style="-fx-background-color: #DEF5F7;" SplitPane.resizableWithParent="false">
                                  <children>
-                                    <Button fx:id="addPatientByDoctorButton" layoutX="42.0" layoutY="33.0" mnemonicParsing="false" onAction="#addPatientByDoctorButtonOnAction" prefHeight="25.0" prefWidth="138.0" text="Nový pacient" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="33.0" />
-                                    <Button fx:id="refreshButton" layoutX="40.0" layoutY="167.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="26.0" prefWidth="141.0" text="Obnoviť" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="167.0" />
-                                    <Button fx:id="patientDetailButton" layoutX="41.0" layoutY="79.0" mnemonicParsing="false" onAction="#patientDetailButtonOnAction" prefHeight="25.0" prefWidth="138.0" text="Detail pacienta" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="79.0" />
-                                    <Button fx:id="patientEditButton" layoutX="41.0" layoutY="124.0" mnemonicParsing="false" onAction="#patientEditButtonOnAction" prefHeight="25.0" prefWidth="138.0" text="Zmeniť pacienta" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="124.0" />
+                                    <Button fx:id="addPatientByDoctorButton" layoutX="42.0" layoutY="33.0" mnemonicParsing="false" onAction="#addPatientByDoctorButtonOnAction" prefHeight="25.0" prefWidth="138.0" text="Nový pacient" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="33.0">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font></Button>
+                                    <Button fx:id="refreshButton" layoutX="40.0" layoutY="167.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="26.0" prefWidth="141.0" text="Obnoviť" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="167.0">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font></Button>
+                                    <Button fx:id="patientDetailButton" layoutX="41.0" layoutY="79.0" mnemonicParsing="false" onAction="#patientDetailButtonOnAction" prefHeight="25.0" prefWidth="138.0" text="Detail pacienta" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="79.0">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font></Button>
+                                    <Button fx:id="patientEditButton" layoutX="41.0" layoutY="124.0" mnemonicParsing="false" onAction="#patientEditButtonOnAction" prefHeight="25.0" prefWidth="138.0" text="Zmeniť pacienta" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="124.0">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font></Button>
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="388.0" prefWidth="246.0">
@@ -58,11 +70,20 @@
                      <children>
                         <SplitPane dividerPositions="0.29797979797979796" prefHeight="523.0" prefWidth="900.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="137.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="137.0" style="-fx-background-color: #DEF5F7;">
                                  <children>
-                                    <Button fx:id="importButton" layoutX="55.0" layoutY="30.0" mnemonicParsing="false" onAction="#importButtonOnAction" prefHeight="25.0" prefWidth="154.0" text="Import data" />
-                                    <Button fx:id="importPatientButton" layoutX="53.0" layoutY="68.0" mnemonicParsing="false" onAction="#importPatientButtonOnAction" prefHeight="26.0" prefWidth="155.0" text="Import pacienta" />
-                                    <Button fx:id="trainModelButton" layoutX="53.0" layoutY="107.0" mnemonicParsing="false" onAction="#trainModelButtonOnAction" prefHeight="26.0" prefWidth="155.0" text="Natrenuj model" />
+                                    <Button fx:id="importButton" layoutX="55.0" layoutY="30.0" mnemonicParsing="false" onAction="#importButtonOnAction" prefHeight="25.0" prefWidth="154.0" text="Import data">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font></Button>
+                                    <Button fx:id="importPatientButton" layoutX="53.0" layoutY="68.0" mnemonicParsing="false" onAction="#importPatientButtonOnAction" prefHeight="26.0" prefWidth="155.0" text="Import pacienta">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font></Button>
+                                    <Button fx:id="trainModelButton" layoutX="53.0" layoutY="107.0" mnemonicParsing="false" onAction="#trainModelButtonOnAction" prefHeight="26.0" prefWidth="155.0" text="Natrenuj model">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font></Button>
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="522.0" prefWidth="502.0">
@@ -84,9 +105,12 @@
                      <children>
                         <SplitPane dividerPositions="0.29797979797979796" prefHeight="523.0" prefWidth="900.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="137.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="137.0" style="-fx-background-color: #DEF5F7;">
                                  <children>
-                                    <Button fx:id="newPatientButton" layoutX="56.0" layoutY="31.0" mnemonicParsing="false" onAction="#newUserOnAction" prefHeight="25.0" prefWidth="154.0" text="Pridať Uživateľa" />
+                                    <Button fx:id="newPatientButton" layoutX="56.0" layoutY="31.0" mnemonicParsing="false" onAction="#newUserOnAction" prefHeight="25.0" prefWidth="154.0" text="Pridať Uživateľa">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font></Button>
                                     <Button fx:id="newPatientButton1" layoutX="56.0" layoutY="71.0" mnemonicParsing="false" onAction="#newUserOnAction" prefHeight="25.0" prefWidth="154.0" text="Odstrániť Uživateľa" />
                                  </children>
                               </AnchorPane>
@@ -105,7 +129,7 @@
           </Tab>
         </tabs>
       </TabPane>
-      <ButtonBar prefHeight="66.0" prefWidth="936.0">
+      <ButtonBar prefHeight="66.0" prefWidth="936.0" style="-fx-background-color: #A3E0E6;">
          <VBox.margin>
             <Insets />
          </VBox.margin>

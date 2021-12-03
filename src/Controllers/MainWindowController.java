@@ -1,8 +1,11 @@
 package Controllers;
 
+import Core.Entity.Enum.ClassifierType;
 import Core.Entity.Enum.UserRole;
 import Core.Entity.Enum.WindowMode;
 import Core.Entity.PatientRecord;
+import Core.Entity.TrainedClassifier;
+import Screens.TrainingOutputWindowController;
 import Services.LoginService;
 import Services.MainService;
 import Services.ModelService;
@@ -188,13 +191,37 @@ public class MainWindowController implements Initializable {
         }
     }
 
+    public void trainModelButtonOnAction(ActionEvent event) {
+        TrainedClassifier classifier = this.modelService.train(ClassifierType.MP);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/Screens/TrainingOutputWindow.fxml"
+                    )
+            );
+            Stage newStage = new Stage();
+            newStage.setTitle("TrainingOutputWindowController window");
+            newStage.setScene(new Scene(loader.load()));
+            TrainingOutputWindowController rainingOutputWindowController = loader.getController();
+            rainingOutputWindowController.init(classifier.getEvaluation());
+
+            newStage.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Nepodarilo sa otvoriť okno.");
+
+            alert.showAndWait();
+        }
+    }
+
     private <T> TableColumn<T, ?> getTableColumnByName(TableView<T> tableView, String name) {
         for (TableColumn<T, ?> col : tableView.getColumns())
             if (col.getText().equals(name)) return col ;
         return null ;
     }
 
-    public void trainModelButtonOnAction(ActionEvent event) throws Exception {
-        this.modelService.train();
-    }
 }

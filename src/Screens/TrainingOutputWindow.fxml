@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="592.0" prefWidth="600.0" style="-fx-background-color: #AFBFCD;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Screens.TrainingOutputWindowController">
+   <children>
+      <TextArea fx:id="outputTextArea" disable="true" layoutX="16.0" layoutY="50.0" prefHeight="486.0" prefWidth="568.0">
+         <font>
+            <Font name="Times New Roman Bold" size="15.0" />
+         </font></TextArea>
+      <Label layoutX="28.0" layoutY="14.0" prefHeight="26.0" prefWidth="122.0" text="Output" textOverrun="WORD_ELLIPSIS" underline="true">
+         <font>
+            <Font name="Times New Roman" size="19.0" />
+         </font>
+      </Label>
+      <Button cancelButton="true" layoutX="480.0" layoutY="552.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="OK" />
+   </children>
+</AnchorPane>

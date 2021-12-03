@@ -50,6 +50,8 @@ hs_err_pid*
 
 /Logs/
 
+*.log
+
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 

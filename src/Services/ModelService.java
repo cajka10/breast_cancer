@@ -6,6 +6,7 @@ import Core.Entity.PatientRecord;
 import Core.Entity.TrainedClassifier;
 import weka.classifiers.Classifier;
 import weka.classifiers.functions.MultilayerPerceptron;
+import weka.classifiers.lazy.IBk;
 import weka.classifiers.trees.J48;
 import weka.core.Debug;
 import weka.core.Instances;
@@ -62,17 +63,25 @@ public class ModelService {
         TrainedClassifier output = new TrainedClassifier();
 
         System.out.println("\nMultilayerPerceptron");
-        if (type == ClassifierType.MP) {
-            MultilayerPerceptron multilayerPerceptron = (MultilayerPerceptron)
-                    mg.buildMultilayerPerceptronClassifier(traindataset);
+        switch (type){
+            case MP:
+                MultilayerPerceptron multilayerPerceptron = (MultilayerPerceptron)
+                        mg.buildMultilayerPerceptronClassifier(traindataset);
 
-            output.setClassifier(multilayerPerceptron);
-            output.setEvaluation(this.evaluateClassifier(multilayerPerceptron, traindataset, testdataset));
-        } else {
-            System.out.println("\nJ48");
-            J48 j48 = (J48) mg.buildJ48Classifier(traindataset);
-            output.setClassifier(j48);
-            output.setEvaluation(this.evaluateClassifier(j48, traindataset, testdataset));
+                output.setClassifier(multilayerPerceptron);
+                output.setEvaluation(this.evaluateClassifier(multilayerPerceptron, traindataset, testdataset));
+                break;
+            case J48:
+                System.out.println("\nJ48");
+                J48 j48 = (J48) mg.buildJ48Classifier(traindataset);
+                output.setClassifier(j48);
+                output.setEvaluation(this.evaluateClassifier(j48, traindataset, testdataset));
+                break;
+            case KNN:
+                System.out.println("\nJ48");
+                IBk ibk = (IBk) mg.buildKNearestNeighboursClassifier(traindataset);
+                output.setClassifier(ibk);
+                output.setEvaluation(this.evaluateClassifier(ibk, traindataset, testdataset));
         }
 
         return output;

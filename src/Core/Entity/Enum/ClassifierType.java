@@ -1,5 +1,5 @@
 package Core.Entity.Enum;
 
 public enum ClassifierType {
-    MP, J48
+    MP, J48, KNN
 }

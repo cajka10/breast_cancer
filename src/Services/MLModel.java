@@ -5,10 +5,12 @@ import org.apache.log4j.Logger;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.MultilayerPerceptron;
+import weka.classifiers.lazy.IBk;
 import weka.classifiers.trees.J48;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
 import weka.core.converters.ConverterUtils;
+import weka.core.neighboursearch.LinearNNSearch;
 
 import java.util.Random;
 
@@ -47,9 +49,20 @@ public class MLModel {
         try {
             j48.buildClassifier(trainDataset);
         } catch (Exception ex) {
-            LOGGER.debug("Nepodarilo sa natrenovať model MultilayerPerceptron");
+            LOGGER.debug("Nepodarilo sa natrenovať model J48");
         }
         return j48;
+    }
+
+    public Classifier buildKNearestNeighboursClassifier(Instances trainDataset) {
+        Classifier knn = new IBk();
+
+        try {
+            knn.buildClassifier(trainDataset);
+        } catch (Exception ex) {
+            LOGGER.debug("Nepodarilo sa natrenovať model KNN");
+        }
+        return knn;
     }
 
     public String getModelEvaluation(Classifier model, Instances train, Instances test) {

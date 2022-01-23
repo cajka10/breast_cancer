@@ -194,7 +194,7 @@ public class MainWindowController implements Initializable {
     }
 
     public void trainModelButtonOnAction(ActionEvent event) {
-        TrainedClassifier classifier = this.modelService.train(ClassifierType.MP);
+        TrainedClassifier classifier = this.modelService.train(ClassifierType.KNN);
 
         try {
             FXMLLoader loader = new FXMLLoader(

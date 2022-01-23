@@ -180,3 +180,159 @@
 2021-11-26 17:05:26 DEBUG LoginService:54 - Nepodarilo sa ulozit model.
 2021-11-26 17:05:42 DEBUG LoginService:54 - Nepodarilo sa ulozit model.
 2021-11-26 17:05:54 DEBUG LoginService:54 - Nepodarilo sa ulozit model.
+2021-11-26 17:12:05 DEBUG Main:15 - Program started.
+2021-11-26 17:12:10 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 17:16:34 DEBUG Main:15 - Program started.
+2021-11-26 17:16:44 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 17:21:35 DEBUG Main:15 - Program started.
+2021-11-26 17:21:41 DEBUG Main:15 - Program started.
+2021-11-26 17:21:48 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 17:22:37 DEBUG Main:15 - Program started.
+2021-11-26 17:22:53 DEBUG Main:15 - Program started.
+2021-11-26 17:22:58 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 17:33:19 DEBUG Main:15 - Program started.
+2021-11-26 17:33:24 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 17:34:18 DEBUG Main:15 - Program started.
+2021-11-26 17:34:23 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-26 17:37:01 DEBUG Main:15 - Program started.
+2021-11-26 17:37:07 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 17:07:34 DEBUG Main:15 - Program started.
+2021-11-28 17:07:48 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 17:15:07 DEBUG Main:15 - Program started.
+2021-11-28 17:15:13 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 17:16:18 DEBUG Main:15 - Program started.
+2021-11-28 17:16:24 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 17:20:38 DEBUG Main:15 - Program started.
+2021-11-28 17:20:44 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 17:21:00 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 17:21:08 DEBUG LoginService:93 - Nepodarilo sa ulozit model.
+2021-11-28 17:26:12 DEBUG Main:15 - Program started.
+2021-11-28 17:26:24 DEBUG Main:15 - Program started.
+2021-11-28 17:26:29 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 17:26:49 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 17:28:00 DEBUG Main:15 - Program started.
+2021-11-28 17:28:14 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 17:29:27 DEBUG Main:15 - Program started.
+2021-11-28 17:29:31 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 17:29:46 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 19:49:35 DEBUG Main:15 - Program started.
+2021-11-28 19:49:56 DEBUG Main:15 - Program started.
+2021-11-28 19:50:03 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 19:50:19 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 19:52:07 DEBUG Main:15 - Program started.
+2021-11-28 19:57:06 DEBUG Main:15 - Program started.
+2021-11-28 19:57:11 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:04:30 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:07:57 DEBUG Main:15 - Program started.
+2021-11-28 20:08:02 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:09:41 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:11:29 DEBUG Main:15 - Program started.
+2021-11-28 20:11:35 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:13:10 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:16:45 DEBUG Main:15 - Program started.
+2021-11-28 20:16:50 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:17:18 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:18:26 DEBUG Main:15 - Program started.
+2021-11-28 20:18:31 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:18:39 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:23:40 DEBUG Main:15 - Program started.
+2021-11-28 20:23:47 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:23:54 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:26:56 DEBUG Main:15 - Program started.
+2021-11-28 20:27:02 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:27:09 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:28:13 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:47:39 DEBUG Main:15 - Program started.
+2021-11-28 20:47:43 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:47:50 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:48:23 DEBUG Main:15 - Program started.
+2021-11-28 20:48:28 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:48:34 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:51:45 DEBUG Main:15 - Program started.
+2021-11-28 20:51:50 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:51:56 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:54:17 DEBUG Main:15 - Program started.
+2021-11-28 20:54:22 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:54:57 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:55:55 DEBUG Main:15 - Program started.
+2021-11-28 20:56:01 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:56:11 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 20:58:45 DEBUG Main:15 - Program started.
+2021-11-28 20:59:11 DEBUG Main:15 - Program started.
+2021-11-28 20:59:34 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 20:59:52 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 21:00:29 DEBUG Main:15 - Program started.
+2021-11-28 21:00:36 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 21:00:46 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 21:02:26 DEBUG Main:15 - Program started.
+2021-11-28 21:02:43 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 21:02:53 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 21:04:11 DEBUG Main:15 - Program started.
+2021-11-28 21:04:16 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 21:04:24 DEBUG MainService:103 - Patient succesfully added.
+2021-11-28 21:19:46 DEBUG Main:15 - Program started.
+2021-11-28 21:19:55 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-11-28 21:20:01 DEBUG MainService:103 - Patient succesfully added.
+2021-12-02 20:26:46 DEBUG Main:15 - Program started.
+2021-12-02 20:26:52 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-02 20:35:10 DEBUG Main:15 - Program started.
+2021-12-02 20:36:21 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 14:21:15 DEBUG Main:15 - Program started.
+2021-12-03 14:21:23 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 14:21:58 DEBUG Main:15 - Program started.
+2021-12-03 14:22:06 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 14:23:10 DEBUG Main:15 - Program started.
+2021-12-03 14:23:15 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 14:34:49 DEBUG Main:15 - Program started.
+2021-12-03 14:34:57 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 14:37:32 DEBUG Main:15 - Program started.
+2021-12-03 14:37:42 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 14:40:57 DEBUG Main:15 - Program started.
+2021-12-03 14:41:06 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 14:43:05 DEBUG Main:15 - Program started.
+2021-12-03 14:43:10 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 14:49:23 DEBUG Main:15 - Program started.
+2021-12-03 14:49:29 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 14:55:23 DEBUG Main:15 - Program started.
+2021-12-03 14:55:28 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 14:55:40 DEBUG Main:15 - Program started.
+2021-12-03 14:55:46 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 15:15:36 DEBUG Main:15 - Program started.
+2021-12-03 15:15:44 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 15:17:13 DEBUG Main:15 - Program started.
+2021-12-03 15:17:19 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 15:18:04 DEBUG Main:15 - Program started.
+2021-12-03 15:18:13 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-03 15:56:39 DEBUG Main:15 - Program started.
+2021-12-04 17:15:54 DEBUG Main:15 - Program started.
+2021-12-04 17:16:00 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-08 17:03:05 DEBUG Main:15 - Program started.
+2021-12-08 17:03:11 DEBUG LoginController:66 - Autentification passed. Logging in.
+2021-12-08 17:03:56 DEBUG MainService:103 - Patient succesfully added.
+2022-01-02 13:18:56 DEBUG Main:15 - Program started.
+2022-01-02 13:19:07 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-01-16 19:35:52 DEBUG Main:15 - Program started.
+2022-01-16 19:35:58 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-01-20 15:43:30 DEBUG Main:15 - Program started.
+2022-01-20 15:43:41 DEBUG Main:15 - Program started.
+2022-01-20 15:43:51 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-01-20 15:45:14 DEBUG Main:15 - Program started.
+2022-01-20 15:45:33 DEBUG Main:15 - Program started.
+2022-01-20 15:45:56 DEBUG Main:15 - Program started.
+2022-01-20 15:46:03 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-01-20 15:58:38 DEBUG Main:15 - Program started.
+2022-01-20 15:58:43 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-01-20 16:02:26 DEBUG Main:15 - Program started.
+2022-01-20 16:02:40 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-01-20 16:04:41 DEBUG Main:15 - Program started.
+2022-01-20 16:04:46 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-01-23 11:05:06 DEBUG Main:15 - Program started.
+2022-01-23 11:05:12 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-01-23 11:06:14 DEBUG Main:15 - Program started.
+2022-01-23 11:06:20 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-01-23 11:26:28 DEBUG Main:15 - Program started.
+2022-01-23 11:26:34 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-01-23 11:47:46 DEBUG Main:15 - Program started.
+2022-01-23 11:47:51 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-01-23 11:49:49 DEBUG Main:15 - Program started.
+2022-01-23 11:49:54 DEBUG LoginController:66 - Autentification passed. Logging in.

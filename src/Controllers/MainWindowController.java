@@ -194,19 +194,16 @@ public class MainWindowController implements Initializable {
     }
 
     public void trainModelButtonOnAction(ActionEvent event) {
-        TrainedClassifier classifier = this.modelService.train(ClassifierType.KNN);
-
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(
-                            "/Screens/TrainingOutputWindow.fxml"
+                            "/Screens/TrainingAlgoritmusOptionWindow.fxml"
                     )
             );
             Stage newStage = new Stage();
-            newStage.setTitle("TrainingOutputWindowController window");
+            newStage.setTitle("Training settings");
             newStage.setScene(new Scene(loader.load()));
-            TrainingOutputWindowController rainingOutputWindowController = loader.getController();
-            rainingOutputWindowController.init(classifier.getEvaluation());
+//            TrainingAlgoritmusOptionController trainingAlgoritmusOptionController = loader.getController();
 
             newStage.showAndWait();
         } catch (IOException ex) {

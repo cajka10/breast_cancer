@@ -160,14 +160,16 @@ public class PatientWindowController implements Initializable {
     public void predictButtonOnAction(ActionEvent event) {
         PatientRecord record = this.mapPatient();
         if (mode.equals(WindowMode.NEW)){
-            TumorType type = this.modelService.predict(record);
+            String[] result = this.modelService.predict(record);
+            TumorType tumorType = TumorType.getValueOf(result[0]);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Predicted value");
-            alert.setHeaderText("Predikovaný typ rakoviny - " + type.toString());
-            alert.setContentText("Model určil, že daný pacien má rakovinu typu - " + type.toString());
+            alert.setHeaderText("Predikovaný typ rakoviny - " + tumorType.toString());
+            alert.setContentText("Model určil, že daný pacien má rakovinu typu - " + tumorType.toString());
+            alert.setContentText("\nS pravdepodobnosťou:  - " + result[1] + "%");
             alert.showAndWait();
 
-            this.tumorTypeComboBox.setValue(type);
+            this.tumorTypeComboBox.setValue(tumorType);
         }
     }
 

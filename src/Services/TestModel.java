@@ -19,7 +19,7 @@ public class TestModel {
 
     public String predict(PatientRecord record,  String datasetPath, String modelPath, ClassifierType type) throws Exception {
         Instances dataset = mg.loadData(datasetPath);
-        String classname = "";
+        String classname[] = new String[2];
         Filter filter = new Normalize();
 
         int trainSize = (int) Math.round(dataset.numInstances() * 0.8);
@@ -69,15 +69,15 @@ public class TestModel {
             System.out.println("\n****************************************************");
         }
 
-        return classname;
+        return classname[0];
     }
 
-    public String classify(PatientRecord record, String modelPath){
+    public String[] classify(PatientRecord record, String modelPath){
         ModelClassifier cls = new ModelClassifier();
         Filter filter = new Normalize();
 
         Instances dataset = cls.createInstance(record);
-        String classname = "";
+        String classname[] = new String[2];
 
         try {
             filter.setInputFormat(dataset);

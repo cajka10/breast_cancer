@@ -78,13 +78,24 @@ public class ModelClassifier {
         return outpurArray;
     }
 
-    public String classifiy(Instances insts, String path) {
-        String result = "U";
+    public String[] classifiy(Instances insts, String path) {
+        String[] result = new String[2];
+        result[0] = "U";
         Classifier cls = null;
         Instance ins = insts.firstInstance();
         try {
             cls = (MultilayerPerceptron) SerializationHelper.read(path);
-            result = (String) classVal.get((int) cls.classifyInstance(insts.firstInstance()));
+            result[0] = (String) classVal.get((int) cls.classifyInstance(insts.firstInstance()));
+            double[] tmp = cls.distributionForInstance(insts.firstInstance());
+
+            if (result[0].equals("B")){
+                result[1] = Double.toString(tmp[0] * 100);
+            }
+            else if (result[0].equals("M")){
+                result[1] =  Double.toString(tmp[1] * 100);
+            }
+            else
+                result[1] =  "NaN";
 
         } catch (Exception ex) {
 

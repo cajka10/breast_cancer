@@ -20,19 +20,19 @@ public class ModelService {
         this.mg = new MLModel();
     }
 
-    public TumorType predict(PatientRecord record) {
+    public String[] predict(PatientRecord record) {
         TestModel test = new TestModel();
         try {
 //            TumorType type = TumorType.valueOf(test.predict(this.getMockPatientRecord(),
 //                    "E:\\breast_cancer\\cancerData.arff",
 //                    "E:\\breast_cancer\\Models\\MPModel.bin", ClassifierType.MP));
-            TumorType type = TumorType.getValueOf(test.classify(this.getMockPatientRecord(),
-                    "E:\\breast_cancer\\Models\\MPModel.bin"));
-            return type;
+            String[] result = test.classify(this.getMockPatientRecord(),
+                    "E:\\breast_cancer\\Models\\MPModel.bin");
+            return result;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return TumorType.UNKNOWN;
+        return new String[2];
     }
 
     public TrainedClassifier train(ClassifierType type) {

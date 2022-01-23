@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
     @FXML
-    private  Button patientDetailButton;
+    private Button patientDetailButton;
 
     private LoginService loginService;
     private UserService userService;
@@ -65,10 +65,12 @@ public class MainWindowController implements Initializable {
 
     }
 
-    public void setUserEnvironment(UserRole role){
-        if (role.equals(UserRole.DOCTOR)){
+    public void setUserEnvironment(UserRole role) {
+        if (role.equals(UserRole.DOCTOR)) {
             adminTab.setDisable(true);
             usersTab.setDisable(true);
+        } else {
+            patientsTab.setDisable(true);
         }
     }
 
@@ -155,7 +157,7 @@ public class MainWindowController implements Initializable {
         this.reloadPatients();
     }
 
-    private void openPatientWindow(WindowMode mode){
+    private void openPatientWindow(WindowMode mode) {
         PatientRecord record = null;
         if (!mode.equals(WindowMode.NEW)) {
             TablePosition pos = this.patientView.getSelectionModel().getSelectedCells().get(0);
@@ -164,7 +166,7 @@ public class MainWindowController implements Initializable {
             Object ob = this.getTableColumnByName(patientView, "record_id").getCellObservableValue(row).getValue();
 
             int patientId = (new Double(ob.toString())).intValue();
-             record = this.mainService.getPatientById(patientId);
+            record = this.mainService.getPatientById(patientId);
         }
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -220,8 +222,8 @@ public class MainWindowController implements Initializable {
 
     private <T> TableColumn<T, ?> getTableColumnByName(TableView<T> tableView, String name) {
         for (TableColumn<T, ?> col : tableView.getColumns())
-            if (col.getText().equals(name)) return col ;
-        return null ;
+            if (col.getText().equals(name)) return col;
+        return null;
     }
 
 }

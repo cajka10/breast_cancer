@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="592.0" prefWidth="600.0" style="-fx-background-color: #AFBFCD;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Screens.TrainingOutputWindowController">
+<AnchorPane prefHeight="662.0" prefWidth="756.0" style="-fx-background-color: #AFBFCD;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Screens.TrainingOutputWindowController">
    <children>
-      <TextArea fx:id="outputTextArea" disable="true" layoutX="16.0" layoutY="50.0" prefHeight="486.0" prefWidth="568.0">
+      <TextArea fx:id="outputTextArea" disable="true" layoutX="16.0" layoutY="50.0" prefHeight="541.0" prefWidth="725.0" style="-fx-font-family: monospace">
          <font>
             <Font name="Times New Roman Bold" size="15.0" />
          </font></TextArea>
@@ -17,6 +17,6 @@
             <Font name="Times New Roman" size="19.0" />
          </font>
       </Label>
-      <Button cancelButton="true" layoutX="480.0" layoutY="552.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="OK" />
+      <Button cancelButton="true" layoutX="630.0" layoutY="607.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="OK" />
    </children>
 </AnchorPane>

@@ -77,8 +77,50 @@ public class PatientRepository {
         return connection.getDbConnection();
     }
 
-    public TableView getPatientColumns(String table) {
-        String query = "Select * from public." + table;
+    public TableView getPatientColumns(String table){
+        String query = "";
+        if (table.equals("PATIENT_RECORD")) {
+             query = "Select radius_mean as \"radius (mean)\", texture_mean as \"radius (texture (mean))\", " +
+                    " perimeter_mean as \"perimeter (mean)\", area_mean as \"area (mean)\"," +
+                    " smoothness_mean as \"smoothness (mean)\", compactness_mean as \"compactness (mean)\"," +
+                    " concavity_mean as \"concavity (mean)\", concave_points_mean as \"concave points (mean)\", " +
+                    " symmetry_mean as \"symmetry (mean)\", fractal_dimension_mean as \"fractal dimension (mean)\", " +
+                    "radius_se as \"radius (se)\", texture_se as \"texture (mean)\", " +
+                    " perimeter_se as \"perimeter (se)\", area_se as \"area (se)\"," +
+                    " smoothness_se as \"smoothness (se)\", compactness_se as \"compactness (se)\"," +
+                    " concavity_se as \"concavity (se)\", concave_points_se as \"concave points (se)\", " +
+                    " symmetry_se as \"symmetry (se)\", fractal_dimension_se as \"fractal dimension (se)\", " +
+                    " radius_worst as \"radius (worst)\", texture_worst as \"radius (texture (worst))\", " +
+                    " perimeter_worst as \"perimeter (worst)\", area_worst as \"area (worst)\"," +
+                    " smoothness_worst as \"smoothness (worst)\", compactness_worst as \"compactness (worst)\"," +
+                    " concavity_worst as \"concavity (worst)\", concave_points_worst as \"concave points (worst)\", " +
+                    " symmetry_worst as \"symmetry (worst)\", fractal_dimension_worst as \"fractal dimension (worst)\" " +
+                    " from public." + table;
+            }
+        else{
+            query = "Select pi.name, pi.surname, pi.birth_id as \"birth id\", radius_mean as \"radius (mean)\"," +
+                    " texture_mean as \"radius (texture (mean))\", " +
+                    " perimeter_mean as \"perimeter (mean)\", area_mean as \"area (mean)\"," +
+                    " smoothness_mean as \"smoothness (mean)\", compactness_mean as \"compactness (mean)\"," +
+                    " concavity_mean as \"concavity (mean)\", concave_points_mean as \"concave points (mean)\", " +
+                    " symmetry_mean as \"symmetry (mean)\", fractal_dimension_mean as \"fractal dimension (mean)\", " +
+                    "radius_se as \"radius (se)\", texture_se as \"texture (mean)\", " +
+                    " perimeter_se as \"perimeter (se)\", area_se as \"area (se)\"," +
+                    " smoothness_se as \"smoothness (se)\", compactness_se as \"compactness (se)\"," +
+                    " concavity_se as \"concavity (se)\", concave_points_se as \"concave points (se)\", " +
+                    " symmetry_se as \"symmetry (se)\", fractal_dimension_se as \"fractal dimension (se)\", " +
+                    " radius_worst as \"radius (worst)\", texture_worst as \"radius (texture (worst))\", " +
+                    " perimeter_worst as \"perimeter (worst)\", area_worst as \"area (worst)\"," +
+                    " smoothness_worst as \"smoothness (worst)\", compactness_worst as \"compactness (worst)\"," +
+                    " concavity_worst as \"concavity (worst)\", concave_points_worst as \"concave points (worst)\", " +
+                    " symmetry_worst as \"symmetry (worst)\", fractal_dimension_worst as \"fractal dimension (worst)\", " +
+                    " class from public." + table + " join public.patient_info pi using (birth_id)";
+        }
+        return this.getPatientColumns(query, table);
+    }
+
+    public TableView getPatientColumns(String query, String table) {
+
         TableView tableView = new TableView();
         ObservableList<ObservableList> data = FXCollections.observableArrayList();
         try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {

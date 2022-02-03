@@ -3,6 +3,7 @@ package Controllers;
 import Core.Entity.Enum.TumorType;
 import Core.Entity.Enum.WindowMode;
 import Core.Entity.PatientRecord;
+import Core.Entity.User;
 import Services.MainService;
 import Services.ModelService;
 import javafx.event.ActionEvent;
@@ -91,6 +92,7 @@ public class PatientWindowController implements Initializable {
 
     private WindowMode mode;
     private int patientRecordId;
+    private User loggedUser;
 
     public PatientWindowController() {
 
@@ -98,7 +100,8 @@ public class PatientWindowController implements Initializable {
         this.modelService = new ModelService();
     }
 
-    public void init(PatientRecord record, WindowMode mode) {
+    public void init(PatientRecord record, WindowMode mode, User user) {
+        this.loggedUser = user;
         this.mode = mode;
         if (record != null) {
             this.patientRecordId = record.getRecordId();
@@ -149,7 +152,7 @@ public class PatientWindowController implements Initializable {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         PatientRecord record = this.mapPatient();
         if (mode.equals(WindowMode.NEW)) {
-            this.mainService.addPatientRecord(record);
+            this.mainService.addPatientRecord(record, loggedUser.getUserId());
         } else if (mode.equals(WindowMode.EDIT)) {
             record.setRecordId(patientRecordId);
             this.mainService.editPatient(record);

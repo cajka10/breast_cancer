@@ -94,12 +94,12 @@ public class MainService {
             patient.setSymmetryWorst(Double.valueOf(record[28]));
             patient.setFractal_dimensionWorst(Double.valueOf(record[29]));
 
-            this.patientRepository.addPatient(patient, PATIENT_RECORD_TABLE );
+            this.patientRepository.addPatientRecord(patient);
         }
     }
 
-    public void addPatientRecord(PatientRecord record) {
-        if (this.patientRepository.addPatient(record, PATIENT_TABLE) > 0){
+    public void addPatientRecord(PatientRecord record, int userId) {
+        if (this.patientRepository.addPatient(record, userId) > 0){
             this.logger.debug("Patient succesfully added.");
         }else{
             this.logger.debug("Error - Patient not added.");

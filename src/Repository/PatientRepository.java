@@ -20,12 +20,24 @@ import java.sql.SQLException;
 public class PatientRepository {
     static final Logger logger = Logger.getLogger(PatientRepository.class.getName());
 
-    public int addPatient(PatientRecord record, String tableName) {
-        int row = 0;
-        String query = "insert into public." + tableName + " (radius_mean, texture_mean, perimeter_mean, area_mean, smoothness_mean, compactness_mean, concavity_mean, concave_points_mean," +
+    public int addPatient(PatientRecord record, int userId){
+        String query = "insert into public.PATIENT (radius_mean, texture_mean, perimeter_mean, area_mean, smoothness_mean, compactness_mean, concavity_mean, concave_points_mean," +
+                " symmetry_mean, fractal_dimension_mean, radius_se, texture_se, perimeter_se, area_se, smoothness_se, compactness_se, concavity_se, concave_points_se, symmetry_seq, " +
+                " fractal_dimension_se, radius_worst, texture_worst, perimeter_worst, area_worst, smoothness_worst, compactness_worst, concavity_worst, concave_points_worst," +
+                " symmetry_worst, fractal_dimension_worst, doctor_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        return  this.addRecordForPatient(record, query,  userId);
+    }
+
+    public int addPatientRecord(PatientRecord record){
+        String query = "insert into public.PATIENT_RECORD (radius_mean, texture_mean, perimeter_mean, area_mean, smoothness_mean, compactness_mean, concavity_mean, concave_points_mean," +
                 " symmetry_mean, fractal_dimension_mean, radius_se, texture_se, perimeter_se, area_se, smoothness_se, compactness_se, concavity_se, concave_points_se, symmetry_seq, " +
                 " fractal_dimension_se, radius_worst, texture_worst, perimeter_worst, area_worst, smoothness_worst, compactness_worst, concavity_worst, concave_points_worst," +
                 " symmetry_worst, fractal_dimension_worst) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        return  this.addRecordForPatient(record, query,  -1);
+    }
+
+    public int addRecordForPatient(PatientRecord record, String query, int userId) {
+        int row = 0;
         try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
             stmt.setDouble(1, (record.getRadiusMean()));
             stmt.setDouble(2, (record.getTextureMean()));
@@ -59,6 +71,8 @@ public class PatientRepository {
             stmt.setDouble(28, (record.getConcave_pointsWorst()));
             stmt.setDouble(29, (record.getSymmetryWorst()));
             stmt.setDouble(30, (record.getFractal_dimensionWorst()));
+            if (userId != -1)
+                stmt.setInt(31, (userId));
 
             row = stmt.executeUpdate();
         } catch (SQLException e) {

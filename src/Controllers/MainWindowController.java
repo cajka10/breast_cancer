@@ -183,7 +183,7 @@ public class MainWindowController{
             newStage.setScene(new Scene(loader.load()));
             PatientWindowController patientRecordController = loader.getController();
             assert record != null;
-            patientRecordController.init(record, mode);
+            patientRecordController.init(record, mode, loggedUser);
 
             newStage.showAndWait();
         } catch (IOException ex) {

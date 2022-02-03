@@ -77,7 +77,7 @@ public class PatientRepository {
         return connection.getDbConnection();
     }
 
-    public TableView getPatientColumns(String table){
+    public TableView getPatientColumns(String table, int userId){
         String query = "";
         if (table.equals("PATIENT_RECORD")) {
              query = "Select radius_mean as \"radius (mean)\", texture_mean as \"radius (texture (mean))\", " +
@@ -104,7 +104,7 @@ public class PatientRepository {
                     " smoothness_mean as \"smoothness (mean)\", compactness_mean as \"compactness (mean)\"," +
                     " concavity_mean as \"concavity (mean)\", concave_points_mean as \"concave points (mean)\", " +
                     " symmetry_mean as \"symmetry (mean)\", fractal_dimension_mean as \"fractal dimension (mean)\", " +
-                    "radius_se as \"radius (se)\", texture_se as \"texture (mean)\", " +
+                    " radius_se as \"radius (se)\", texture_se as \"texture (mean)\", " +
                     " perimeter_se as \"perimeter (se)\", area_se as \"area (se)\"," +
                     " smoothness_se as \"smoothness (se)\", compactness_se as \"compactness (se)\"," +
                     " concavity_se as \"concavity (se)\", concave_points_se as \"concave points (se)\", " +
@@ -114,7 +114,10 @@ public class PatientRepository {
                     " smoothness_worst as \"smoothness (worst)\", compactness_worst as \"compactness (worst)\"," +
                     " concavity_worst as \"concavity (worst)\", concave_points_worst as \"concave points (worst)\", " +
                     " symmetry_worst as \"symmetry (worst)\", fractal_dimension_worst as \"fractal dimension (worst)\", " +
-                    " class from public." + table + " join public.patient_info pi using (birth_id)";
+                    " class from public." + table + " pt join public.patient_info pi using (birth_id)" +
+                    " join public.user us on (us.user_id = pt.doctor_id ) " +
+                    " where doctor_id = " + userId ;
+
         }
         return this.getPatientColumns(query, table);
     }

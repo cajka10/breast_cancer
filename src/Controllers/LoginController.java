@@ -63,7 +63,7 @@ public class LoginController {
                         this.setVerifyPasswordVisible();
                         this.newUser = user.isNew();
                     } else {
-                        logger.debug("Autentification passed. Logging in.");
+                        logger.debug("Authentication passed. Logging in.");
                         this.openMainWindow();
                     }
                 } else {
@@ -98,7 +98,7 @@ public class LoginController {
             newStage.setTitle("Main window");
             newStage.setScene(new Scene(loader.load()));
             MainWindowController windowController = loader.getController();
-            windowController.setUserEnvironment(this.user.getRole());
+            windowController.setUserEnvironment(this.user);
 
             newStage.show();
         } catch (IOException ex) {

@@ -5,6 +5,7 @@ import Core.Entity.Enum.UserRole;
 import Core.Entity.Enum.WindowMode;
 import Core.Entity.PatientRecord;
 import Core.Entity.TrainedClassifier;
+import Core.Entity.User;
 import Screens.TrainingOutputWindowController;
 import Services.LoginService;
 import Services.MainService;
@@ -23,7 +24,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class MainWindowController implements Initializable {
+public class MainWindowController{
     @FXML
     private Button patientDetailButton;
 
@@ -31,6 +32,7 @@ public class MainWindowController implements Initializable {
     private UserService userService;
     private MainService mainService;
     private ModelService modelService;
+    private User loggedUser;
 
     @FXML
     private Button cancelButton;
@@ -62,11 +64,20 @@ public class MainWindowController implements Initializable {
         this.userService = new UserService();
         this.mainService = new MainService();
         this.modelService = new ModelService();
-
+        this.loggedUser = new User();
     }
 
-    public void setUserEnvironment(UserRole role) {
-        if (role.equals(UserRole.DOCTOR)) {
+    public void setUserEnvironment(User user) {
+        this.loggedUser = user;
+        if (user.getRole().equals(UserRole.DOCTOR)){
+            this.reloadPatients();
+        }
+        else{
+            this.reloadPatientRecords();
+            this.reloadUsers();
+        }
+
+        if (user.getRole().equals(UserRole.DOCTOR)) {
             adminTab.setDisable(true);
             usersTab.setDisable(true);
         } else {
@@ -93,16 +104,9 @@ public class MainWindowController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.reloadPatients();
-        this.reloadPatientRecords();
-        this.reloadUsers();
-    }
-
     private void reloadPatients() {
         this.patientView.getItems().clear();
-        TableView patientTable = this.mainService.getPatients();
+        TableView patientTable = this.mainService.getPatients(loggedUser.getUserId());
         this.patientView.getColumns().addAll(patientTable.getColumns());
         this.patientView.setItems(patientTable.getItems());
         this.patientView.refresh();

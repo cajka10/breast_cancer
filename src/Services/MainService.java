@@ -29,11 +29,11 @@ public class MainService {
         this.patientRepository = new PatientRepository();
     }
 
-    public TableView<PatientRecord> getPatients() {
-        return patientRepository.getPatientColumns(PATIENT_TABLE);
+    public TableView<PatientRecord> getPatients(int userId) {
+        return patientRepository.getPatientColumns(PATIENT_TABLE, userId);
     }
     public TableView<PatientRecord> getPatientsRecords() {
-        return patientRepository.getPatientColumns(PATIENT_RECORD_TABLE);
+        return patientRepository.getPatientColumns(PATIENT_RECORD_TABLE, 0);
     }
 
     public void importData(Stage stage) {

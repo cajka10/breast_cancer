@@ -1,5 +1,6 @@
 package Services;
 
+import Core.Entity.Enum.TumorType;
 import Core.Entity.PatientRecord;
 import Repository.PatientRepository;
 import com.opencsv.CSVParser;
@@ -93,6 +94,8 @@ public class MainService {
             patient.setConcave_pointsWorst(Double.valueOf(record[27]));
             patient.setSymmetryWorst(Double.valueOf(record[28]));
             patient.setFractal_dimensionWorst(Double.valueOf(record[29]));
+            String k = (record[30]);
+            patient.setTumorType(TumorType.getValueOf((record[30])));
 
             this.patientRepository.addPatientRecord(patient);
         }

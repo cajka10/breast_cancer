@@ -25,4 +25,8 @@ public enum TumorType {
     public static TumorType getValueOf(String value){
         return (TumorType) map.get(value);
     }
+
+    public String getValue() {
+        return value;
+    }
 }

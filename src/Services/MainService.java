@@ -13,9 +13,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 //TODO dorobiť Edit záznamov, loggovanie, odomykanie tabov
@@ -94,7 +92,6 @@ public class MainService {
             patient.setConcave_pointsWorst(Double.valueOf(record[27]));
             patient.setSymmetryWorst(Double.valueOf(record[28]));
             patient.setFractal_dimensionWorst(Double.valueOf(record[29]));
-            String k = (record[30]);
             patient.setTumorType(TumorType.getValueOf((record[30])));
 
             this.patientRepository.addPatientRecord(patient);
@@ -110,6 +107,7 @@ public class MainService {
     }
 
     public PatientRecord getPatientById(int patientId) {
+        this.logger.debug("GetPatientById - Id = " + patientId);
         return this.patientRepository.getPatientById(patientId, this.PATIENT_TABLE);
     }
 
@@ -120,4 +118,5 @@ public class MainService {
             this.logger.debug("Error - Patient: " + record.getRecordId() + " not updated.");
         }
     }
+
 }

@@ -28,10 +28,8 @@ public class MainWindowController{
     @FXML
     private Button patientDetailButton;
 
-    private LoginService loginService;
     private UserService userService;
     private MainService mainService;
-    private ModelService modelService;
     private User loggedUser;
 
     @FXML
@@ -58,12 +56,9 @@ public class MainWindowController{
     @FXML
     private Tab usersTab;
 
-
     public MainWindowController() {
-        this.loginService = new LoginService();
         this.userService = new UserService();
         this.mainService = new MainService();
-        this.modelService = new ModelService();
         this.loggedUser = new User();
     }
 
@@ -101,7 +96,6 @@ public class MainWindowController{
 
             alert.showAndWait();
         }
-
     }
 
     private void reloadPatients() {
@@ -167,7 +161,7 @@ public class MainWindowController{
             TablePosition pos = this.patientView.getSelectionModel().getSelectedCells().get(0);
             int row = pos.getRow();
 
-            Object ob = this.getTableColumnByName(patientView, "record_id").getCellObservableValue(row).getValue();
+            Object ob = this.getTableColumnByName(patientView, "id").getCellObservableValue(row).getValue();
 
             int patientId = (new Double(ob.toString())).intValue();
             record = this.mainService.getPatientById(patientId);

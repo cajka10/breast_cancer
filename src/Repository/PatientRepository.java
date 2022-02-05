@@ -25,6 +25,8 @@ public class PatientRepository {
                 " symmetry_mean, fractal_dimension_mean, radius_se, texture_se, perimeter_se, area_se, smoothness_se, compactness_se, concavity_se, concave_points_se, symmetry_seq, " +
                 " fractal_dimension_se, radius_worst, texture_worst, perimeter_worst, area_worst, smoothness_worst, compactness_worst, concavity_worst, concave_points_worst," +
                 " symmetry_worst, fractal_dimension_worst, doctor_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        logger.debug("Adding patient started.");
         return  this.addRecordForPatient(record, query,  userId);
     }
 
@@ -33,6 +35,7 @@ public class PatientRepository {
                 " symmetry_mean, fractal_dimension_mean, radius_se, texture_se, perimeter_se, area_se, smoothness_se, compactness_se, concavity_se, concave_points_se, symmetry_se, " +
                 " fractal_dimension_se, radius_worst, texture_worst, perimeter_worst, area_worst, smoothness_worst, compactness_worst, concavity_worst, concave_points_worst," +
                 " symmetry_worst, fractal_dimension_worst, class) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        logger.debug("Adding patient record started.");
         return  this.addRecordForPatient(record, query,  -1);
     }
 
@@ -73,18 +76,25 @@ public class PatientRepository {
             stmt.setDouble(28, (record.getConcave_pointsWorst()));
             stmt.setDouble(29, (record.getSymmetryWorst()));
             stmt.setDouble(30, (record.getFractal_dimensionWorst()));
+
             if (userId != -1)
                 stmt.setInt(31, (userId));
             else
                 stmt.setString(31, record.getTumorType().getValue());
             row = stmt.executeUpdate();
             conn.close();
+            logger.debug("Adding patient record finished correctly.");
+
         } catch (SQLException e) {
             System.err.format("SQL State: %s= ?,%s", e.getSQLState(), e.getMessage());
             System.out.println(e.getSQLState());
+            logger.debug("Adding patient failed.");
+            logger.debug(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
+            logger.debug("Adding patient failed.");
+            logger.debug(e.getMessage());
         }
 
         return row;
@@ -98,12 +108,12 @@ public class PatientRepository {
     public TableView getPatientColumns(String table, int userId){
         String query = "";
         if (table.equals("PATIENT_RECORD")) {
-             query = "Select radius_mean as \"radius (mean)\", texture_mean as \"radius (texture (mean))\", " +
+             query = "Select record_id as \"id\", radius_mean as \"radius (mean)\", texture_mean as \"radius (texture (mean))\", " +
                     " perimeter_mean as \"perimeter (mean)\", area_mean as \"area (mean)\"," +
                     " smoothness_mean as \"smoothness (mean)\", compactness_mean as \"compactness (mean)\"," +
                     " concavity_mean as \"concavity (mean)\", concave_points_mean as \"concave points (mean)\", " +
                     " symmetry_mean as \"symmetry (mean)\", fractal_dimension_mean as \"fractal dimension (mean)\", " +
-                    "radius_se as \"radius (se)\", texture_se as \"texture (mean)\", " +
+                    " radius_se as \"radius (se)\", texture_se as \"texture (mean)\", " +
                     " perimeter_se as \"perimeter (se)\", area_se as \"area (se)\"," +
                     " smoothness_se as \"smoothness (se)\", compactness_se as \"compactness (se)\"," +
                     " concavity_se as \"concavity (se)\", concave_points_se as \"concave points (se)\", " +
@@ -112,11 +122,11 @@ public class PatientRepository {
                     " perimeter_worst as \"perimeter (worst)\", area_worst as \"area (worst)\"," +
                     " smoothness_worst as \"smoothness (worst)\", compactness_worst as \"compactness (worst)\"," +
                     " concavity_worst as \"concavity (worst)\", concave_points_worst as \"concave points (worst)\", " +
-                    " symmetry_worst as \"symmetry (worst)\", fractal_dimension_worst as \"fractal dimension (worst)\" " +
+                    " symmetry_worst as \"symmetry (worst)\", fractal_dimension_worst as \"fractal dimension (worst)\", class as  \"Nádor\" " +
                     " from public." + table;
             }
         else{
-            query = "Select pi.name, pi.surname, pi.birth_id as \"birth id\", radius_mean as \"radius (mean)\"," +
+            query = "Select record_id as \"id\", pi.name, pi.surname, pi.birth_id as \"birth id\", radius_mean as \"radius (mean)\"," +
                     " texture_mean as \"radius (texture (mean))\", " +
                     " perimeter_mean as \"perimeter (mean)\", area_mean as \"area (mean)\"," +
                     " smoothness_mean as \"smoothness (mean)\", compactness_mean as \"compactness (mean)\"," +
@@ -141,7 +151,7 @@ public class PatientRepository {
     }
 
     public TableView getPatientColumns(String query, String table) {
-
+        logger.debug("Start - GetPatientColumns - " + table);
         TableView tableView = new TableView();
         ObservableList<ObservableList> data = FXCollections.observableArrayList();
         try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
@@ -162,7 +172,10 @@ public class PatientRepository {
                 for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
                     //Columns
                     try {
-                        row.add(rs.getDouble(i));
+                        if (i == 1)
+                            row.add(rs.getInt(i));
+                        else
+                            row.add(rs.getDouble(i));
                     } catch (Exception ex){
                         row.add(rs.getString(i).replaceAll("\\s+",""));
                     }
@@ -170,6 +183,7 @@ public class PatientRepository {
                 data.add(row);
             }
             tableView.getItems().setAll(data);
+            logger.debug("END - GetPatientColumns - " + table);
         } catch (SQLException e) {
             System.out.println("Connection Failed");
             e.printStackTrace();
@@ -214,7 +228,7 @@ public class PatientRepository {
                 record.setCompactnessSe(rs.getDouble("compactness_se"));
                 record.setConcavitySe(rs.getDouble("concavity_se"));
                 record.setConcave_pointsSe(rs.getDouble("concave_points_se"));
-                record.setSymmetrySe(rs.getDouble("symmetry_seq"));
+                record.setSymmetrySe(rs.getDouble("symmetry_se"));
                 record.setFractal_dimensionSe(rs.getDouble("fractal_dimension_se"));
 
                 record.setRadiusWorst(rs.getDouble("radius_worst"));
@@ -270,7 +284,7 @@ public class PatientRepository {
                 "  compactness_se= ?," +
                 "  concavity_se= ?," +
                 "  concave_points_se= ?," +
-                "  symmetry_seq= ?," +
+                "  symmetry_se= ?," +
                 "  fractal_dimension_se= ?," +
                 "  radius_worst= ?," +
                 "  texture_worst= ?," +

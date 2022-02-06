@@ -2,7 +2,6 @@ package Controllers;
 
 import Core.Entity.Enum.ClassifierType;
 import Core.Entity.TrainedClassifier;
-import Screens.TrainingOutputWindowController;
 import Services.ModelService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

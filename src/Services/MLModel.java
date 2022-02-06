@@ -33,6 +33,8 @@ public class MLModel {
     public Classifier buildMultilayerPerceptronClassifier(Instances trainDataset) {
         MultilayerPerceptron m = new MultilayerPerceptron();
         m.setLearningRate(0.1);
+        m.setNominalToBinaryFilter(true);
+        m.setNormalizeAttributes(true);
         try {
             m.buildClassifier(trainDataset);
         } catch (Exception ex) {

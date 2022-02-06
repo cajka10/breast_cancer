@@ -144,7 +144,7 @@ public class PatientRepository {
                     " symmetry_worst as \"symmetry (worst)\", fractal_dimension_worst as \"fractal dimension (worst)\", " +
                     " class from public." + table + " pt join public.patient_info pi using (birth_id)" +
                     " join public.user us on (us.user_id = pt.doctor_id ) " +
-                    " where doctor_id = " + userId ;
+                    " where pt.active = true and doctor_id = " + userId ;
 
         }
         return this.getPatientColumns(query, table);
@@ -185,7 +185,7 @@ public class PatientRepository {
             tableView.getItems().setAll(data);
             logger.debug("END - GetPatientColumns - " + table);
         } catch (SQLException e) {
-            System.out.println("Connection Failed");
+            System.out.println("SQL Failed");
             e.printStackTrace();
             logger.debug("Error getting patients records.");
             logger.debug(e.getMessage());
@@ -347,5 +347,22 @@ public class PatientRepository {
             logger.debug(e.getMessage());
         }
         return row;
+    }
+
+    public boolean deletePatient(int patientId) {
+        String query = "update public.PATIENT " +
+                " set active = false " +
+                " where record_id = ? ";
+        try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
+            stmt.setInt(1, patientId);
+            return stmt.execute();
+        }
+        catch (SQLException ex){
+            System.out.println("Connection Failed");
+            ex.printStackTrace();
+            logger.debug("Error deleting patient with id: " + patientId);
+            logger.debug(ex.getMessage());
+            return false;
+        }
     }
 }

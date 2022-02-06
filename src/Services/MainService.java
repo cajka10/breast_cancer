@@ -16,9 +16,7 @@ import org.apache.log4j.Logger;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-//TODO dorobiť Edit záznamov, loggovanie, odomykanie tabov
 public class MainService {
-    private ObservableList<ObservableList> data;
     private PatientRepository patientRepository;
     static final Logger logger = Logger.getLogger(MainService.class.getName());
 
@@ -119,4 +117,7 @@ public class MainService {
         }
     }
 
+    public boolean deletePatient(int id) {
+        return this.patientRepository.deletePatient(id);
+    }
 }

@@ -1,27 +1,19 @@
 package Controllers;
 
-import Core.Entity.Enum.ClassifierType;
 import Core.Entity.Enum.UserRole;
 import Core.Entity.Enum.WindowMode;
 import Core.Entity.PatientRecord;
-import Core.Entity.TrainedClassifier;
 import Core.Entity.User;
-import Screens.TrainingOutputWindowController;
-import Services.LoginService;
 import Services.MainService;
-import Services.ModelService;
 import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 public class MainWindowController{
@@ -221,4 +213,14 @@ public class MainWindowController{
         return null;
     }
 
+    public void patientDeleteButtonOnAction(ActionEvent event) {
+
+        TablePosition pos = this.patientView.getSelectionModel().getSelectedCells().get(0);
+        int row = pos.getRow();
+
+        Object ob = this.getTableColumnByName(patientView, "id").getCellObservableValue(row).getValue();
+
+        int patientId = (new Double(ob.toString())).intValue();
+        this.mainService.deletePatient(patientId);
+    }
 }

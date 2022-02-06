@@ -336,3 +336,146 @@
 2022-01-23 11:47:51 DEBUG LoginController:66 - Autentification passed. Logging in.
 2022-01-23 11:49:49 DEBUG Main:15 - Program started.
 2022-01-23 11:49:54 DEBUG LoginController:66 - Autentification passed. Logging in.
+2022-02-03 19:37:42 DEBUG Main:15 - Program started.
+2022-02-03 19:38:58 DEBUG Main:15 - Program started.
+2022-02-03 19:39:04 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 17:59:02 DEBUG Main:15 - Program started.
+2022-02-04 17:59:08 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:01:11 DEBUG Main:15 - Program started.
+2022-02-04 18:01:22 DEBUG Main:15 - Program started.
+2022-02-04 18:01:28 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:07:46 DEBUG Main:15 - Program started.
+2022-02-04 18:07:55 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:09:49 DEBUG Main:15 - Program started.
+2022-02-04 18:09:54 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:11:37 DEBUG Main:15 - Program started.
+2022-02-04 18:11:45 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:18:31 DEBUG Main:15 - Program started.
+2022-02-04 18:18:38 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:19:50 DEBUG Main:15 - Program started.
+2022-02-04 18:19:56 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:21:24 DEBUG Main:15 - Program started.
+2022-02-04 18:22:07 DEBUG Main:15 - Program started.
+2022-02-04 18:22:13 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:24:44 DEBUG Main:15 - Program started.
+2022-02-04 18:24:49 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:27:51 DEBUG Main:15 - Program started.
+2022-02-04 18:27:59 DEBUG LoginService:30 - Login succesfull.
+2022-02-04 18:27:59 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:28:19 DEBUG Main:15 - Program started.
+2022-02-04 18:28:24 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:30:41 DEBUG Main:15 - Program started.
+2022-02-04 18:30:47 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 18:38:01 DEBUG Main:15 - Program started.
+2022-02-04 18:38:11 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 19:47:10 DEBUG Main:15 - Program started.
+2022-02-04 19:47:16 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-04 19:49:14 DEBUG Main:15 - Program started.
+2022-02-05 13:53:55 DEBUG Main:15 - Program started.
+2022-02-05 13:54:02 DEBUG LoginService:30 - Login succesfull.
+2022-02-05 13:54:02 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 13:54:02 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-05 13:54:02 DEBUG PatientRepository:183 - END - GetPatientColumns - PATIENT
+2022-02-05 13:56:15 DEBUG Main:15 - Program started.
+2022-02-05 13:56:23 DEBUG LoginService:30 - Login succesfull.
+2022-02-05 13:56:23 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 13:56:23 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-05 13:56:23 DEBUG PatientRepository:183 - END - GetPatientColumns - PATIENT
+2022-02-05 13:58:51 DEBUG Main:15 - Program started.
+2022-02-05 13:58:57 DEBUG LoginService:30 - Login succesfull.
+2022-02-05 13:58:57 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 13:58:57 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-05 13:58:57 DEBUG PatientRepository:183 - END - GetPatientColumns - PATIENT
+2022-02-05 13:59:46 DEBUG Main:15 - Program started.
+2022-02-05 13:59:51 DEBUG LoginService:30 - Login succesfull.
+2022-02-05 13:59:51 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 13:59:51 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-05 13:59:52 DEBUG PatientRepository:183 - END - GetPatientColumns - PATIENT
+2022-02-05 14:00:21 DEBUG MainService:110 - GetPatientById - Id1
+2022-02-05 14:00:21 DEBUG PatientRepository:250 - Error while getting patient.
+2022-02-05 14:00:21 DEBUG PatientRepository:251 - The column name symmetry_seq was not found in this ResultSet.
+2022-02-05 14:02:02 DEBUG MainService:110 - GetPatientById - Id1
+2022-02-05 14:02:17 DEBUG PatientRepository:250 - Error while getting patient.
+2022-02-05 14:02:17 DEBUG PatientRepository:251 - The column name symmetry_seq was not found in this ResultSet.
+2022-02-05 14:02:33 DEBUG Main:15 - Program started.
+2022-02-05 14:02:38 DEBUG LoginService:30 - Login succesfull.
+2022-02-05 14:02:38 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 14:02:38 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-05 14:02:38 DEBUG PatientRepository:183 - END - GetPatientColumns - PATIENT
+2022-02-05 14:02:46 DEBUG MainService:110 - GetPatientById - Id1
+2022-02-05 14:04:17 DEBUG Main:15 - Program started.
+2022-02-05 14:04:29 DEBUG Main:15 - Program started.
+2022-02-05 14:04:34 DEBUG LoginService:30 - Login succesfull.
+2022-02-05 14:04:34 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 14:04:34 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-05 14:04:34 DEBUG PatientRepository:183 - END - GetPatientColumns - PATIENT
+2022-02-05 14:04:41 DEBUG MainService:110 - GetPatientById - Id1
+2022-02-05 14:12:21 DEBUG Main:15 - Program started.
+2022-02-05 14:12:26 DEBUG LoginService:30 - Login succesfull.
+2022-02-05 14:12:26 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 14:12:27 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-05 14:12:27 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT
+2022-02-05 14:13:11 DEBUG Main:15 - Program started.
+2022-02-05 14:13:16 DEBUG LoginService:30 - Login succesfull.
+2022-02-05 14:13:16 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 14:13:17 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-05 14:13:17 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT
+2022-02-05 14:13:29 DEBUG Main:15 - Program started.
+2022-02-05 14:13:43 DEBUG Main:15 - Program started.
+2022-02-05 14:13:49 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 14:13:49 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT_RECORD
+2022-02-05 14:13:49 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT_RECORD
+2022-02-05 22:29:53 DEBUG Main:15 - Program started.
+2022-02-05 22:30:50 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 22:30:51 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT_RECORD
+2022-02-05 22:30:51 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT_RECORD
+2022-02-05 22:33:55 DEBUG Main:15 - Program started.
+2022-02-05 22:34:00 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 22:34:01 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT_RECORD
+2022-02-05 22:34:01 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT_RECORD
+2022-02-05 22:34:13 DEBUG Main:15 - Program started.
+2022-02-05 22:34:25 DEBUG LoginService:30 - Login succesfull.
+2022-02-05 22:34:25 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 22:34:26 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-05 22:34:26 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT
+2022-02-05 22:35:35 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-05 22:35:35 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT
+2022-02-05 22:35:39 DEBUG MainService:110 - GetPatientById - Id = 2
+2022-02-05 22:35:50 DEBUG MainService:116 - Patient: 2 succesfully updated.
+2022-02-05 22:35:50 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-05 22:35:50 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT
+2022-02-05 23:24:57 DEBUG Main:15 - Program started.
+2022-02-05 23:25:04 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 23:25:04 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT_RECORD
+2022-02-05 23:25:04 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT_RECORD
+2022-02-05 23:26:56 DEBUG Main:15 - Program started.
+2022-02-05 23:27:08 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-05 23:27:08 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT_RECORD
+2022-02-05 23:27:08 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT_RECORD
+2022-02-06 14:05:17 DEBUG Main:15 - Program started.
+2022-02-06 14:05:23 DEBUG LoginService:30 - Login succesfull.
+2022-02-06 14:05:23 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-06 14:05:24 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-06 14:05:24 DEBUG PatientRepository:190 - Error getting patients records.
+2022-02-06 14:05:24 DEBUG PatientRepository:191 - ERROR: column reference "active" is ambiguous
+  Position: 1387
+2022-02-06 14:06:25 DEBUG Main:15 - Program started.
+2022-02-06 14:06:31 DEBUG LoginService:30 - Login succesfull.
+2022-02-06 14:06:31 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-06 14:06:31 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-06 14:06:31 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT
+2022-02-06 14:06:43 DEBUG PatientRepository:363 - Error deleting patient with id: 2
+2022-02-06 14:06:43 DEBUG PatientRepository:364 - The column index is out of range: 0, number of columns: 1.
+2022-02-06 14:06:45 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-06 14:06:45 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT
+2022-02-06 14:06:49 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-06 14:06:49 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT
+2022-02-06 14:08:45 DEBUG Main:15 - Program started.
+2022-02-06 14:08:54 DEBUG LoginService:30 - Login succesfull.
+2022-02-06 14:08:54 DEBUG LoginController:66 - Authentication passed. Logging in.
+2022-02-06 14:08:54 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-06 14:08:54 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT
+2022-02-06 14:09:18 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-06 14:09:18 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT
+2022-02-06 14:09:20 DEBUG PatientRepository:154 - Start - GetPatientColumns - PATIENT
+2022-02-06 14:09:20 DEBUG PatientRepository:186 - END - GetPatientColumns - PATIENT

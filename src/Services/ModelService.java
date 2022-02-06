@@ -78,7 +78,7 @@ public class ModelService {
                 output.setEvaluation(this.evaluateClassifier(j48, traindataset, testdataset));
                 break;
             case KNN:
-                System.out.println("\nJ48");
+                System.out.println("\nKNN");
                 IBk ibk = (IBk) mg.buildKNearestNeighboursClassifier(traindataset);
                 output.setClassifier(ibk);
                 output.setEvaluation(this.evaluateClassifier(ibk, traindataset, testdataset));

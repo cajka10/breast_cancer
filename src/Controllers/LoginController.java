@@ -95,7 +95,7 @@ public class LoginController {
             );
 
             Stage newStage = new Stage();
-            newStage.setTitle("Main window");
+            newStage.setTitle("Breast cancer diagnosis tool");
             newStage.setScene(new Scene(loader.load()));
             MainWindowController windowController = loader.getController();
             windowController.setUserEnvironment(this.user);

@@ -36,10 +36,10 @@ public class TrainingAlgoritmusOptionController implements Initializable {
                     )
             );
             Stage newStage = new Stage();
-            newStage.setTitle("TrainingOutputWindowController window");
+            newStage.setTitle("Model Evaluation");
             newStage.setScene(new Scene(loader.load()));
-            TrainingOutputWindowController rainingOutputWindowController = loader.getController();
-            rainingOutputWindowController.init(classifier.getEvaluation());
+            TrainingOutputWindowController trainingOutputWindowController = loader.getController();
+            trainingOutputWindowController.init(classifier);
 
             newStage.showAndWait();
         } catch (IOException ex) {

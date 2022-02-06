@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="167.0" prefWidth="519.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TrainingAlgoritmusOptionController">
    <children>
       <ComboBox fx:id="algoritmusComboBox" layoutX="242.0" layoutY="54.0" prefHeight="30.0" prefWidth="211.0" />
-      <Label layoutX="67.0" layoutY="54.0" prefHeight="30.0" prefWidth="132.0" text="Algoritmus">
+      <Label layoutX="67.0" layoutY="54.0" prefHeight="30.0" prefWidth="132.0" text="Algorithm">
          <font>
             <Font name="Times New Roman" size="20.0" />
          </font>

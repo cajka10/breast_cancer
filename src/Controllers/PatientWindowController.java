@@ -167,9 +167,9 @@ public class PatientWindowController implements Initializable {
             TumorType tumorType = TumorType.getValueOf(result[0]);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Predicted value");
-            alert.setHeaderText("Predikovaný typ rakoviny - " + tumorType.toString());
-            alert.setContentText("Model určil, že daný pacien má rakovinu typu - " + tumorType.toString());
-            alert.setContentText("\nS pravdepodobnosťou:  - " + result[1] + "%");
+            alert.setHeaderText("Predicted tumor type - " + tumorType.toString());
+            alert.setContentText("This patient has - " + tumorType.toString() + " tumor type!");
+            alert.setContentText("\nWith probability:  - " + result[1] + "%");
             alert.showAndWait();
 
             this.tumorTypeComboBox.setValue(tumorType);

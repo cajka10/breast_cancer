@@ -106,6 +106,7 @@ public class MLModel {
             SerializationHelper.write(modelpath, model);
         } catch (Exception ex) {
             LOGGER.debug("Nepodarilo sa ulozit model.");
+            LOGGER.debug(ex.getMessage());
         }
     }
 }

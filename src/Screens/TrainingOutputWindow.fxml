@@ -18,5 +18,6 @@
          </font>
       </Label>
       <Button cancelButton="true" layoutX="630.0" layoutY="607.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="OK" />
+      <Button fx:id="saveButton" cancelButton="true" layoutX="521.0" layoutY="607.0" mnemonicParsing="false" onAction="#saveButtonOnAction" prefHeight="26.0" prefWidth="88.0" text="Save" />
    </children>
 </AnchorPane>

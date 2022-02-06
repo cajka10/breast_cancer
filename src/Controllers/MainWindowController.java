@@ -113,7 +113,6 @@ public class MainWindowController{
         TableView userTable = this.userService.getUsers();
         this.usersTableView.getColumns().addAll(userTable.getColumns());
         this.usersTableView.setItems(userTable.getItems());
-        this.usersTableView.refresh();
 
     }
 

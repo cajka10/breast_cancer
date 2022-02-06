@@ -112,7 +112,7 @@ public class UserRepository {
     }
 
     public TableView getUserColumns() {
-        String query = "Select u.user_id, u.user_name, (select name from user_role where role_id = u.role_id) as role  from public.user u where u.active = true";
+        String query = "Select u.user_id, u.user_name, (select name from user_role where role_id = u.role_id) as role, u.name, u.surname  from public.user u where u.active = true";
         TableView tableView = new TableView();
         ObservableList<ObservableList> data = FXCollections.observableArrayList();
         try (PreparedStatement stmt = this.getConnection().prepareStatement(query)) {
@@ -137,7 +137,8 @@ public class UserRepository {
                 row.add(rs.getInt("user_id"));
                 row.add(rs.getString("user_name"));
                 row.add(rs.getString("role"));
-
+                row.add(rs.getString("name"));
+                row.add(rs.getString("surname"));
                 data.add(row);
             }
             tableView.getItems().setAll(data);
